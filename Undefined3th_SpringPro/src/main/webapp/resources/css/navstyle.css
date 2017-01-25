@@ -1,0 +1,29 @@
+body,
+body * {
+  transition: all 300ms ease-out;
+}
+body.light {
+  background-color: #EEE;
+}
+body.dark {
+  background-color: #222;
+}
+body ul.menu {
+  position: absolute;
+  height: 250px;
+  top: 25%;
+  width: auto;
+  margin-left: 50px;
+}
+body ul.menu li {
+  color: #000;
+  list-style-type: none;
+  line-height: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 50px;
+  text-transform: lowercase;
+}
+body ul.menu li:hover {
+  color: #EEE;
+  cursor: pointer;
+}

@@ -4,10 +4,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" name="viewport" content="width=device-width">
 <title>Insert title here</title>
+<jsp:include page="ui/myResource.jsp"/>
 </head>
 <body>
-	<h3>안녕</h3>
+<jsp:include page="ui/navbar.jsp">
+	<jsp:param value="home" name="active"/>
+</jsp:include>
 </body>
 </html>

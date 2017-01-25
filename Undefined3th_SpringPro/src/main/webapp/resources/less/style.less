@@ -1,0 +1,44 @@
+// Variables
+@mainfont: 'Raleway', sans-serif;
+@bglight: #EEE;
+@bgdark: #222;
+@itemcolor: #000;
+@itemhover: #EEE;
+@menuheight: @menulineheight * 5; // @menulineheight * number of <li> elements
+@menuleft: 50px;
+@menufontsize: 50px;
+@menulineheight: @menufontsize;
+@menutexttransform: lowercase;
+
+// Styling
+body {
+  &, * {
+    transition: all 300ms ease-out;
+  }
+  &.light {
+	  background-color: @bglight;
+  }
+  &.dark {
+	  background-color: @bgdark;
+  }
+  ul.menu {
+    position: absolute;
+    height: @menuheight;
+    top: 50%;
+    margin-top: -(@menuheight / 2);
+    width: auto;
+    margin-left: @menuleft;
+    li {
+      color: @itemcolor;
+      list-style-type: none;
+      line-height: @menulineheight;
+      font-family: @mainfont;
+      font-size: @menufontsize;
+      text-transform: @menutexttransform;
+      &:hover {
+        color: @itemhover;
+        cursor: pointer;
+      }
+    }
+  }
+}
