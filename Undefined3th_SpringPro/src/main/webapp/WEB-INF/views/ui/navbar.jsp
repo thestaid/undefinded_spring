@@ -39,11 +39,11 @@ body ul.menu a:hover {
 .signinfo{font-size: 40px;}
 .mainContent{
 	position:absolute;
-	top:10%;
-	left:18%;
+	top:0%;
+	left:350px;
 	display: table;
 	width: 100% ;
-	height: 800px;
+	height: 100%;
 	background-color: #EEE;
 }
 </style>
