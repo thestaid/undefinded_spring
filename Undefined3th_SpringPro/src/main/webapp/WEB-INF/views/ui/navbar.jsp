@@ -5,15 +5,69 @@
 	//session에서 id 받아오기
 	String id=(String)session.getAttribute("id");
 %>
+<style>
+body,
+body * {
+  transition: all 300ms ease-out;
+}
+body.light {
+  background-color: #EEE;
+}
+body.dark {
+  background-color: #222;
+}
+body ul.menu {
+  position: absolute;
+  height: 250px;
+  top: 25%;
+  width: auto;
+  margin-left: 50px;
+}
+body ul.menu li>a{text-decoration:none;color:black; }
+body ul.menu li {
+  color: #000;
+  list-style-type: none;
+  line-height: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 50px;
+  text-transform: lowercase;
+}
+body ul.menu a:hover {
+  color: #EEE !important;
+  cursor: pointer;
+}
+.signinfo{font-size: 40px;}
+.mainContent{
+	position:absolute;
+	top:10%;
+	left:18%;
+	display: table;
+	width: 100% ;
+	height: 800px;
+	background-color: #EEE;
+}
+</style>
 <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
 <ul class="menu">
-    <li><span>Home</span></li>
-    <li><span>Board</span></li>
-    <li><span>Photo</span></li>
-    <li><span>Visitor</span></li>
-    <li><span>Chat</span></li>
-    <li style="margin-top:100px"><span>로그인</span></li>
-    <li><span>회원가입</span></li>
-    <li><span>님 로그인중</span></li>
-    <li><span>로그아웃</span></li>
+    <li><a href="${pageContext.request.contextPath }/home.do">Home</a></li>
+    <li><a href="${pageContext.request.contextPath }/board/list.do">Board</a></li>
+    <li><a href="${pageContext.request.contextPath }/archive/list.do">Photo</a></li>
+    <li><a href="${pageContext.request.contextPath }/visitor/visitors.do">Visitor</a></li>
+    <li><a href="${pageContext.request.contextPath }/chat/chats.do">Chat</a></li>
+    <li 
+    	<c:if test="${id ne 'admin'}">style="display:none;"</c:if> 
+    		id="navbarAdmin" 
+    	<c:if test="${param.active eq 'admin' }">class="active"</c:if>>
+    	<a href="${pageContext.request.contextPath }/admin/list.do">관리페이지</a>
+    </li>
+    <c:choose>
+    	<c:when test="${empty id }">
+		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/signin.do" class=signinfo>로그인</a></li>
+		    <li><a href="${pageContext.request.contextPath }/users/signup.do" class=signinfo>회원가입</a></li>    	
+    	</c:when>
+		<c:otherwise>
+		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/private/info.do?id=${id}" class=signinfo>님 로그인중</a></li>
+		    <li><a href="${pageContext.request.contextPath }/users/signout.do" class=signinfo>로그아웃</a></li>		
+		</c:otherwise>
+    </c:choose>
 </ul>
