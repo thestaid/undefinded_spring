@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,6 +28,21 @@ public class BoardController {
 		
 		ModelAndView mView=boardService.getList(request, pageNum);
 		mView.setViewName("board/list");
+		return mView;
+	}
+	
+	@RequestMapping("/board/private/insertform")
+	public String insertform(){
+		return "board/private/insertform";
+	}
+	
+	@RequestMapping("/board/private/insert")
+	public ModelAndView insert(HttpServletRequest request, @ModelAttribute BoardDto dto){
+		ModelAndView mView = new ModelAndView();
+		boardService.insert(dto);
+		mView.addObject("alertMess", "새 글이 추가되었습니다.");
+		mView.addObject("redirectUri", request.getContextPath()+"/board/list.do");
+		mView.setViewName("alert");
 		return mView;
 	}
 }

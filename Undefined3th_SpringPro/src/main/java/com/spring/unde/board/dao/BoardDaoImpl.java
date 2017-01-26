@@ -22,8 +22,7 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public void insert(BoardDto dto) {
-		// TODO Auto-generated method stub
-		
+		session.insert("board.insert", dto);
 	}
 
 	@Override

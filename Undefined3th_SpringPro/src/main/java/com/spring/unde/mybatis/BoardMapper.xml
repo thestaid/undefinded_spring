@@ -34,6 +34,13 @@
 		FROM board_cafe
 	</select>
 	
+	
+	<insert id="insert" parameterType="boardDto">
+		INSERT INTO board_cafe
+		(num, writer, title, content, viewCount, regdate)
+		VALUES(board_cafe_seq.NEXTVAL, 
+		#{writer}, #{title}, #{content}, #{viewCount}, SYSDATE)
+	</insert>
 </mapper>
 
 
