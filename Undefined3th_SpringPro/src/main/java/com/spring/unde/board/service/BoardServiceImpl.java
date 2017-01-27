@@ -41,8 +41,14 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public ModelAndView getData(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		//정보 얻어오기
+		BoardDto dto = boardDao.getData(num);
+		//조회수 1증가
+		boardDao.increaseViewCount(num);
+		//얻어온 정보 담아서
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("dto", dto);
+		return mView;
 	}
 
 	@Override

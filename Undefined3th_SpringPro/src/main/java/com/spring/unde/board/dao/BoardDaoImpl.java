@@ -16,7 +16,7 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Override
 	public void increaseViewCount(int num) {
-		// TODO Auto-generated method stub
+		session.update("board.increaseViewCount", num);
 		
 	}
 
@@ -38,9 +38,9 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public BoardDto getDate(int num) {
-		// TODO Auto-generated method stub
-		return null;
+	public BoardDto getData(int num) {
+		BoardDto dto = session.selectOne("board.getData", num);
+		return dto;
 	}
 
 	@Override

@@ -45,4 +45,11 @@ public class BoardController {
 		mView.setViewName("alert");
 		return mView;
 	}
+	
+	@RequestMapping("/board/detail")
+	public ModelAndView detail(@RequestParam int num){
+		ModelAndView mView=boardService.getData(num);
+		mView.setViewName("board/detail");
+		return mView;
+	}
 }
