@@ -52,4 +52,25 @@ public class BoardController {
 		mView.setViewName("board/detail");
 		return mView;
 	}
+	
+
+	@RequestMapping("/board/private/updateform")
+	public ModelAndView updateform(@RequestParam int num){
+		//수정할 글 정보가 담긴 ModelAndView 객체를 리턴 받는다. 
+		ModelAndView mView=boardService.updateForm(num);
+		//view 페이지의 정보 설정하고  
+		mView.setViewName("board/private/updateform");
+		//리턴해주기
+		return mView;
+	}
+	
+	@RequestMapping("/board/private/update")
+	public ModelAndView update(HttpServletRequest request ,@ModelAttribute BoardDto dto){
+		boardService.update(dto);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("alertMess", "글이 수정되었습니다.");
+		mView.addObject("redirectUri", request.getContextPath()+"/board/list.do");
+		mView.setViewName("alert");
+	 	return mView;
+	}
 }

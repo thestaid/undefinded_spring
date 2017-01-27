@@ -29,8 +29,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void update(BoardDto dto) {
-		// TODO Auto-generated method stub
-
+		boardDao.update(dto);
 	}
 
 	@Override
@@ -109,8 +108,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public ModelAndView updateForm(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		//수정할 글정보를 얻어온다. 
+		BoardDto dto = boardDao.getData(num);
+		//수정할 글정보를 ModelAndView 객체에 담고 
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("dto", dto);
+		return mView;
 	}
 
 }
