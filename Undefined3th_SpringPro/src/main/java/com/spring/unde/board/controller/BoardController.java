@@ -56,11 +56,8 @@ public class BoardController {
 
 	@RequestMapping("/board/private/updateform")
 	public ModelAndView updateform(@RequestParam int num){
-		//수정할 글 정보가 담긴 ModelAndView 객체를 리턴 받는다. 
 		ModelAndView mView=boardService.updateForm(num);
-		//view 페이지의 정보 설정하고  
 		mView.setViewName("board/private/updateform");
-		//리턴해주기
 		return mView;
 	}
 	
@@ -72,5 +69,16 @@ public class BoardController {
 		mView.addObject("redirectUri", request.getContextPath()+"/board/list.do");
 		mView.setViewName("alert");
 	 	return mView;
+	}
+	
+	@RequestMapping("/board/private/delete")
+	public ModelAndView delete(HttpServletRequest request ,@RequestParam int num){
+		boardService.delete(num);
+		String id = (String)request.getSession().getAttribute("id");
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("alertMess", id+" 님 "+num+" 번째 글을 삭제하였습니다.");
+		mView.addObject("redirectUri", request.getContextPath()+"/board/list.do");
+		mView.setViewName("alert");
+		return mView;
 	}
 }
