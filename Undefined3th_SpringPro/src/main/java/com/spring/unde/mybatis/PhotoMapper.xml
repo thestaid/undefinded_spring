@@ -27,7 +27,21 @@
 				  ) result1
 			)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>	
+	
+	<select id="getData" parameterType="int" resultType="photoDto">
+		SELECT <include refid="photoColumns"/>
+		FROM board_data
+		WHERE num=#{num}
 	</select>
+	
+	<insert id="upload" parameterType="photoDto">
+		INSERT INTO board_data
+		(num, writer, title, orgFileName, saveFileName, fileSize, regdate)
+		VALUES(board_data_seq.NEXTVAL,
+		 #{writer}, #{title}, #{orgFileName}, #{saveFileName}, #{fileSize}, SYSDATE)
+	</insert>
+	
 </mapper>
 
 

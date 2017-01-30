@@ -91,7 +91,7 @@ h3 {
 			<a
 				href="<c:choose>
          <c:when test="${empty id }">javascript:photoLoginCheck()</c:when>
-         <c:otherwise>uploadform.do</c:otherwise>
+         <c:otherwise>private/uploadform.do</c:otherwise>
    </c:choose>"
 				class="btn btn-success"
 				style="float: right; padding: 4px; font-weight: bold;"> <span

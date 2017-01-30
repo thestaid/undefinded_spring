@@ -15,14 +15,13 @@ public class PhotoDaoImpl implements PhotoDao{
 	private SqlSession session;
 
 	@Override
-	public PhotoDto getData() {
-		// TODO Auto-generated method stub
-		return null;
+	public PhotoDto getData(int num) {
+		PhotoDto dto = session.selectOne("photo.getData", num);
+		return dto;
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -40,8 +39,7 @@ public class PhotoDaoImpl implements PhotoDao{
 
 	@Override
 	public void upload(PhotoDto dto) {
-		// TODO Auto-generated method stub
-		
+		session.insert("photo.upload", dto);
 	}
 
 	@Override
