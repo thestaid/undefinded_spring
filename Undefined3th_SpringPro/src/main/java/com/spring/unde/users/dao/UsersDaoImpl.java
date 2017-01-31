@@ -28,8 +28,8 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public String getPassword(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		String password=session.selectOne("users.getPwd", id);
+		return password;
 	}
 
 	@Override

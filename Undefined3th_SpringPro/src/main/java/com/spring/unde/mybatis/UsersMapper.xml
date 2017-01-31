@@ -11,6 +11,10 @@
 		INSERT INTO unde_users (id, pwd, email, regdate, answer, aw) 
 		VALUES(#{id}, #{pwd}, #{email}, SYSDATE, #{answer}, #{aw})
 	</insert>		
+	<select id="getPwd" parameterType="String" resultType="String">
+		SELECT pwd FROM unde_users 
+		WHERE id=#{id}
+	</select>	
 </mapper>
 
 
