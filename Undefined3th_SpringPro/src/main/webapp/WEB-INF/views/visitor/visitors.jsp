@@ -63,7 +63,7 @@
 </head>
 <body>
 <jsp:include page="../ui/navbar.jsp">
-	<jsp:param value="vistor" name="active"/>
+	<jsp:param value="visitors" name="active"/>
 </jsp:include>
 	<div class="container">
 		<div class="boardListForm">

@@ -1,6 +1,6 @@
 package com.spring.unde.visitor.service;
 
-import java.util.List;	
+import java.util.List;		
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,30 +21,6 @@ public class VisitorServiceImpl implements VisitorService{
 	private VisitorDao visitorDao; 
 	
 	@Override
-	public void insert(VisitorDto dto) {
-		visitorDao.insert(dto);
-		
-	}
-
-	@Override
-	public void update(VisitorDto dto) {
-		visitorDao.update(dto);
-	}
-	
-	@Override
-	public ModelAndView updateForm(int num) {
-		VisitorDto dto = visitorDao.getData(num);
-		ModelAndView mView = new ModelAndView();
-		mView.addObject("dto", dto);
-		return mView;
-	}
-	
-	@Override
-	public void delete(int num) {
-		visitorDao.delete(num);
-	}
-	
-	@Override
 	public ModelAndView getList(HttpServletRequest request, int pageNum) {
 		/*//검색과 관련된 파라미터를 읽어와 본다.
 		String keyword=request.getParameter("keyword");
@@ -59,7 +35,7 @@ public class VisitorServiceImpl implements VisitorService{
 			request.setAttribute("condition", condition);
 			request.setAttribute("keyword", keyword);
 		}
-		
+			
 		//보여줄 페이지 데이터의 시작 ResultSet row 번호
 		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
 		//보여줄 페이지 데이터의 끝 ResultSet row 번호
@@ -91,9 +67,8 @@ public class VisitorServiceImpl implements VisitorService{
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("totalPageCount", totalPageCount);
-		return mView;*/
+		return mView;*/	
 		return null;
-		
 	}
 
 	@Override
@@ -103,5 +78,31 @@ public class VisitorServiceImpl implements VisitorService{
 		mView.addObject("dto", dto);
 		return mView;
 	}
+	
+	@Override
+	public void insert(VisitorDto dto) {
+		visitorDao.insert(dto);
+		
+	}
+
+	@Override
+	public void update(VisitorDto dto) {
+		visitorDao.update(dto);
+	}
+	
+	@Override
+	public ModelAndView updateForm(int num) {
+		VisitorDto dto = visitorDao.getData(num);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("dto", dto);
+		return mView;
+	}
+	
+	@Override
+	public void delete(int num) {
+		visitorDao.delete(num);
+	}
+	
+	
 
 }
