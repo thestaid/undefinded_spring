@@ -8,7 +8,6 @@ public interface PhotoDao {
 	public List<PhotoDto> getList(PhotoDto dto);
 	public void upload(PhotoDto dto);
 	public PhotoDto getData(int num);
-	public void update();
-	public void delete();
+	public void delete(int num);
 	public int getCount();
 }

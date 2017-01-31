@@ -21,20 +21,14 @@ public class PhotoDaoImpl implements PhotoDao{
 	}
 
 	@Override
-	public void update() {
-		
-	}
-
-	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-		
+	public void delete(int num) {
+		session.delete("photo.delete", num);
 	}
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		int count=session.selectOne("photo.getCount");
+		return count;
 	}
 
 	@Override

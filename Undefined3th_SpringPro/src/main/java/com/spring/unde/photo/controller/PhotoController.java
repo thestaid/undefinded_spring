@@ -54,5 +54,16 @@ public class PhotoController {
 		System.out.println("들어가기전");
 		return mView;
 	}
+	
+	@RequestMapping("/photo/private/delete")
+	public ModelAndView delete(HttpServletRequest request ,@RequestParam int num){
+		photoService.delete(num);
+		String id = (String)request.getSession().getAttribute("id");
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("alertMess", id+" 님 "+num+" 번째 글을 삭제하였습니다.");
+		mView.addObject("redirectUri", request.getContextPath()+"/photo/list.do");
+		mView.setViewName("alert");
+		return mView;
+	}
  
 }

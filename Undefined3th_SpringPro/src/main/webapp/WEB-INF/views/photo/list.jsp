@@ -78,8 +78,9 @@ h3 {
 								<td class="division">${tmp.getRegdate()}</td>
 								<td class="division"><c:choose>
 										<c:when test="${id eq 'admin' or id eq tmp.getWriter()}">
-											<a href="delete.do?num=${tmp.getNum()}"><span
-												class="glyphicon glyphicon-trash" style="font-size: 20px;"></span></a>
+											<a href="javascript:deleteCheck(${tmp.getNum() })"><span
+												class="glyphicon glyphicon-trash" style="font-size: 20px;">
+												</span></a>
 										</c:when>
 										<c:otherwise></c:otherwise>
 									</c:choose></td>
@@ -162,21 +163,13 @@ h3 {
 		function photoLoginCheck() {
 			alert("로그인 해주세요!");
 		}
-		/* var isLogin=${isLogin};
-		
-		$("#writeBtn").click(function(){
-		   $.ajax({
-			   url:"loginCheck.do",
-			   success:function(data){// {"isLogin":true} or {"isLogin":false}
-			   	   isLogin=data.isLogin;
-				   if(data.isLogin){
-					   //하고 싶은 작업 진행 하기
-				   }else{
-					   alert("로그인이 필요 합니다.");
-				   }
-			   }
-		   });
-		}); */
+
+		function deleteCheck(num){
+			var isDelete = confirm("진짜 삭제할거에요?");
+			if(isDelete){
+				location.href = "private/delete.do?num="+num;
+			}
+		}
 	</script>
 </body>
 </html>

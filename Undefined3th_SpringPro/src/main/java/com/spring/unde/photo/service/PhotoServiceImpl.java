@@ -126,15 +126,8 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
-	public void update(PhotoDto dto) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void delete(int num) {
-		// TODO Auto-generated method stub
-
+		photoDao.delete(num);
 	}
 
 }

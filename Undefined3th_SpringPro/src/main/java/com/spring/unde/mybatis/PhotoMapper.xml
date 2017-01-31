@@ -42,6 +42,16 @@
 		 #{writer}, #{title}, #{orgFileName}, #{saveFileName}, #{fileSize}, SYSDATE)
 	</insert>
 	
+	<delete id="delete" parameterType="int">
+		DELETE FROM board_data
+		WHERE num=#{num}
+	</delete>
+	
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM board_data
+	</select>
+	
 </mapper>
 
 
