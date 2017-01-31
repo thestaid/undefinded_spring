@@ -28,20 +28,28 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public String getPassword(String id) {
-		String password=session.selectOne("users.getPwd", id);
+			String password=session.selectOne("users.getPwd", id);			
 		return password;
 	}
 
 	@Override
 	public boolean update(UsersDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isSuccess=false;
+		try{		
+			session.update("users.update", dto);
+			isSuccess=true;
+		}catch(Exception e){isSuccess=false;}		
+		return isSuccess;
 	}
 
 	@Override
 	public boolean delete(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isSuccess=false;
+		try{		
+			session.delete("users.delete", id);
+			isSuccess=true;
+		}catch(Exception e){isSuccess=false;}			
+		return isSuccess;
 	}
 
 	@Override
@@ -57,14 +65,14 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public UsersDto getData(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		UsersDto dto=session.selectOne("users.getData", id);
+		return dto;
 	}
 
 	@Override
 	public List<UsersDto> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<UsersDto> list=session.selectList("users.getList");
+		return list;
 	}
 
 }

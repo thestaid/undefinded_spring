@@ -1,6 +1,7 @@
 package com.spring.unde.users.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +47,18 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public boolean update(UsersDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+		//암포화된 비밀번호를 얻어낸다.
+		String encodePwd=pEncoder.encode(dto.getPwd());
+		//Dto  객체에 다시 넣어준다.
+		dto.setPwd(encodePwd);		
+		boolean isSuccess=usersDao.update(dto);
+		return isSuccess;
 	}
 
 	@Override
 	public boolean delete(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isSuccess=usersDao.delete(id);
+		return isSuccess;
 	}
 
 	@Override
@@ -68,14 +73,26 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public ModelAndView getData(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		//Dao 를 이용해서 회원정보를 얻어온다.
+		UsersDto dto=usersDao.getData(id);
+		//ModelAndView 객체를 생성해서
+		ModelAndView mView=new ModelAndView();
+		//회원 정보를  "dto"라는 키값으로 담는다.
+		mView.addObject("dto", dto);
+		//ModelAndView 객체를 리턴해준다.
+		return mView;
 	}
 
 	@Override
 	public ModelAndView getList() {
-		// TODO Auto-generated method stub
-		return null;
+		//Dao 를 이용해서 회원정보를 얻어온다.
+		List<UsersDto> list=usersDao.getList();
+		//ModelAndView 객체를 생성해서
+		ModelAndView mView=new ModelAndView();
+		//회원 정보를  "dto"라는 키값으로 담는다.
+		mView.addObject("list", list);
+		//ModelAndView 객체를 리턴해준다.
+		return mView;
 	}
 
 }

@@ -24,7 +24,7 @@
 <jsp:include page="../ui/navbar.jsp"></jsp:include>
 	<div class="mainContent">
 	<%--회원가입하면 원래 요청한 페이지의 uri값을 파라미터로 들고간다. --%>
-		<form action="signup.do" method="post" class="signupForm">
+		<form action="signup.do?uri=${uri }" method="post" class="signupForm">
 			<h3><strong>회원가입</strong></h3>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="id">아이디</label>

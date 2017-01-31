@@ -3,7 +3,13 @@
 <mapper namespace="users">
 	<sql id="dateFormat">
 		TO_CHAR(regdate,'YYYY"년"MM"월"DD"일" HH24:MI') regdate
-	</sql>	
+	</sql>
+	<select id="getData" parameterType="String" 
+			resultType="usersDto">
+		SELECT id, pwd, email, <include refid="dateFormat"/>
+		FROM unde_users
+		WHERE id=#{id}
+	</select>		
 	<select id="isExistId" parameterType="String" resultType="String">
 		SELECT id FROM unde_users WHERE id=#{id}
 	</select>
@@ -15,6 +21,17 @@
 		SELECT pwd FROM unde_users 
 		WHERE id=#{id}
 	</select>	
+	<update id="update" parameterType="usersDto">
+		UPDATE unde_users  SET pwd=#{pwd}, email=#{email} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM unde_users  WHERE id=#{id}
+	</delete>
+	<select id="getList" resultType="usersDto">
+		SELECT id, email, <include refid="dateFormat"/>
+		FROM unde_users 
+		ORDER BY regdate DESC		
+	</select>				
 </mapper>
 
 
