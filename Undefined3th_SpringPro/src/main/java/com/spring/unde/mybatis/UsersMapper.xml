@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+	<sql id="dateFormat">
+		TO_CHAR(regdate,'YYYY"년"MM"월"DD"일" HH24:MI') regdate
+	</sql>	
+	<select id="isExistId" parameterType="String" resultType="String">
+		SELECT id FROM unde_users WHERE id=#{id}
+	</select>
+	<insert id="insert" parameterType="usersDto">
+		INSERT INTO unde_users (id, pwd, email, regdate, answer, aw) 
+		VALUES(#{id}, #{pwd}, #{email}, SYSDATE, #{answer}, #{aw})
+	</insert>		
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

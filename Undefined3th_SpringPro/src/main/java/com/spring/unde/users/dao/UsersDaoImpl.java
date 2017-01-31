@@ -16,8 +16,14 @@ public class UsersDaoImpl implements UsersDao{
 	
 	@Override
 	public boolean insert(UsersDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isSuccess=false;
+		try{
+			session.insert("users.insert", dto);
+			isSuccess=true;
+		}catch(Exception e){
+			isSuccess=false;
+		}
+		return isSuccess;
 	}
 
 	@Override
@@ -40,8 +46,13 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public boolean canUseId(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		//인자로 전달된 아이디를 DB에서 select 해본다.
+		String selectedId=session.selectOne("users.isExistId", id);
+		if(selectedId==null){//없으면
+			return true;//사용가능한 아이디가 없으면
+		}else{
+			return false;
+		}
 	}
 
 	@Override

@@ -13,8 +13,8 @@ public class UsersDto {
 	
 	public UsersDto(){};
 	
-	public UsersDto(String id, String pwd, String email, String regdate, String answer, String aw1, String aw2,
-			String aw3, int startRowNum, int endRowNum) {
+	public UsersDto(String id, String pwd, String email, String regdate, String answer, String aw, 
+			int startRowNum, int endRowNum) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -70,7 +70,7 @@ public class UsersDto {
 		return aw;
 	}
 
-	public void setAw(String aw1) {
+	public void setAw(String aw) {
 		this.aw = aw;
 	}
 
