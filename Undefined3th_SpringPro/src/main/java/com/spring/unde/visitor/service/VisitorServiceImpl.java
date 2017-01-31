@@ -1,6 +1,6 @@
 package com.spring.unde.visitor.service;
 
-import java.util.List;
+import java.util.List;	
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gura.spring.cafe.dao.CafeDto;
 import com.spring.unde.visitor.dao.VisitorDao;
 import com.spring.unde.visitor.dto.VisitorDto;
 
@@ -47,7 +46,7 @@ public class VisitorServiceImpl implements VisitorService{
 	
 	@Override
 	public ModelAndView getList(HttpServletRequest request, int pageNum) {
-		//검색과 관련된 파라미터를 읽어와 본다.
+		/*//검색과 관련된 파라미터를 읽어와 본다.
 		String keyword=request.getParameter("keyword");
 		String condition=request.getParameter("condition");
 	      
@@ -92,7 +91,8 @@ public class VisitorServiceImpl implements VisitorService{
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("totalPageCount", totalPageCount);
-		return mView;
+		return mView;*/
+		return null;
 		
 	}
 

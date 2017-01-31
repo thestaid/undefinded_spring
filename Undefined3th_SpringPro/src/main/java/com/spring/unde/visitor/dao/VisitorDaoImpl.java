@@ -26,7 +26,7 @@ public class VisitorDaoImpl implements VisitorDao {
 	}
 
 	@Override
-	public VisitorDto getData(VisitorDto dto) {
+	public VisitorDto getData(int num) {
 		VisitorDto resultdto = session.selectOne("visitor.getData");
 		return resultdto;
 	}

@@ -121,7 +121,7 @@
 			</div>		
 			<script>
 				//업데이트 폼의 ajax 처리
-				function updateform${tmp.num }(){
+				function updateform ${tmp.num }(){
 					var num=$("#updateNum${tmp.num }").val();
 					$("#num"+num).toggle();
 					$.ajax({
@@ -134,7 +134,7 @@
 					});
 				};
 				//삭제시 여부를 묻는 함수
-				function deleteConfirm${tmp.num }(){
+				function deleteConfirm ${tmp.num }(){
 					var isDelete=confirm("삭제하시겠습니까?");
 					if(isDelete){
 						location.href="${pageContext.request.contextPath }/visitor/delete.do?num=${tmp.num }";
