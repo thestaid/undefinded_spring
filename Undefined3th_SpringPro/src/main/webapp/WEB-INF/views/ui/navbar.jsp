@@ -38,13 +38,13 @@ body ul.menu a:hover {
 }
 .signinfo{font-size: 40px;}
 .mainContent{
-	position:absolute;
-	top:0%;
-	left:350px;
-	display: table;
-	width: 100% ;
-	height: 100%;
-	background-color: #EEE;
+   position:absolute;
+   top:0%;
+   left:350px;
+   display: table;
+   width: 100% ;
+   height: 100%;
+   background-color: #EEE;
 }
 </style>
 <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>

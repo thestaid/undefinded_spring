@@ -20,8 +20,8 @@ public class VisitorDaoImpl implements VisitorDao {
 	}
 
 	@Override
-	public List<VisitorDto> getList(VisitorDto dto) {
-		List<VisitorDto> list = session.selectList("visitor.getList", dto);
+	public List<VisitorDto> getList() {
+		List<VisitorDto> list = session.selectList("visitor.getList");
 		return list;
 	}
 
@@ -47,10 +47,5 @@ public class VisitorDaoImpl implements VisitorDao {
 		session.delete("visitor.delete", num);
 	}
 
-	@Override
-	public int getCount(VisitorDto dto) {
-		int count=session.selectOne("visitor.getCount");
-		return count;
-	}
 
 }

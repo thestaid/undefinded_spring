@@ -9,6 +9,7 @@
 <script src="${pageContext.request.contextPath }/
 	SmartEditor/js/HuskyEZCreator.js"></script>
 <style>
+	
 	.commentTop{
 		background-color: #28274b; 
 		color: #fff;
@@ -49,6 +50,7 @@
 	}
 	.boardListForm{
 		margin:100px 20px 100px 20px;
+		width:60%;
 	}	
 	h3{
 		font-weight:bolder;		
@@ -65,7 +67,7 @@
 <jsp:include page="../ui/navbar.jsp">
 	<jsp:param value="visitors" name="active"/>
 </jsp:include>
-	<div class="container">
+	<div class="mainContent">
 		<div class="boardListForm">
 		<h3><strong> 방명록</strong></h3>
 		<div class="insertform">
