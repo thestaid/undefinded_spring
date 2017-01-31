@@ -30,7 +30,7 @@
 	</select>	
 	
 	<select id="getData" parameterType="int" resultType="photoDto">
-		SELECT <include refid="photoColumns"/>
+		SELECT num,writer,title,orgFileName,saveFileName,fileSize,regdate
 		FROM board_data
 		WHERE num=#{num}
 	</select>

@@ -118,9 +118,11 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
-	public ModelAndView getData(PhotoDto dto) {
-		// TODO Auto-generated method stub
-		return null;
+	public ModelAndView getData(int num) {
+		PhotoDto dto = photoDao.getData(num);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("dto", dto);
+		return mView;
 	}
 
 	@Override

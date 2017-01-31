@@ -41,5 +41,18 @@ public class PhotoController {
 		return mView;
 	}
 	
-	
+	@RequestMapping("/photo/download")
+	public ModelAndView download(@RequestParam int num){
+		ModelAndView mView=photoService.getData(num);
+		System.out.println("요기요");
+		System.out.println(num);
+		/*
+		 *  view 페키지에 DownloadView class 에 지정한
+		 *  @Component("downloadView") 를 가리킨다. 
+		 */
+		mView.setViewName("downloadView");
+		System.out.println("들어가기전");
+		return mView;
+	}
+ 
 }

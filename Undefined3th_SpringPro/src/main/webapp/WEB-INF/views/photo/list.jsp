@@ -73,7 +73,7 @@ h3 {
 									src="${pageContext.request.contextPath }/upload/${tmp.saveFileName }"
 									style="width: 150px; height: 100px;" /></td>
 								<td class="division"><a
-									href="download.do?num=${tmp.getNum()}&condition=${condition}&keyword=${keyword}">${tmp.getOrgFileName()}</a></td>
+									href="download.do?num=${tmp.getNum()}">${tmp.getOrgFileName()}</a></td>
 								<td class="division">${tmp.getFileSize()}</td>
 								<td class="division">${tmp.getRegdate()}</td>
 								<td class="division"><c:choose>
