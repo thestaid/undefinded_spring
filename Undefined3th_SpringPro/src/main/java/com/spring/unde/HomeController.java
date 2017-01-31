@@ -15,4 +15,14 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/popup/popup_page")
+	public String popup(){
+		return "popup/popup_page";
+	}
+	
+	@RequestMapping("/popup/nopopup")
+	public String noPopup(){
+		return "popup/nopopup";
+	}
+	
 }
