@@ -62,8 +62,8 @@ body ul.menu a:hover {
     </li>
     <c:choose>
     	<c:when test="${empty id }">
-		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/signin.do" class=signinfo>로그인</a></li>
-		    <li><a href="${pageContext.request.contextPath }/users/signup.do" class=signinfo>회원가입</a></li>    	
+		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/signin_form.do?uri=${pageContext.request.requestURI }" class=signinfo>로그인</a></li>
+		    <li><a href="${pageContext.request.contextPath }/users/signup_form.do?uri=${pageContext.request.requestURI }" class=signinfo>회원가입</a></li>    	
     	</c:when>
 		<c:otherwise>
 		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/private/info.do?id=${id}" class=signinfo>님 로그인중</a></li>
