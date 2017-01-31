@@ -87,4 +87,16 @@ public class UsersController {
 		return mView;		
 	}
 	
+	// "/users/signout.do" 요청 처리
+	@RequestMapping("/users/signout")
+	public ModelAndView signout(HttpSession session){
+		//세션 초기화
+		session.invalidate();
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("alertMess", "로그 아웃 되었습니다.");
+		mView.addObject("redirectUri", session.getServletContext().getContextPath());
+		mView.setViewName("alert");
+		return mView;
+	}	
+	
 }
