@@ -7,12 +7,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.spring.unde.board.dto.BoardDto" alias="boardDto"/>
 		<typeAlias type="com.spring.unde.photo.dto.PhotoDto" alias="photoDto"/>
+		<typeAlias type="com.spring.unde.board.dto.BoardCommentDto" alias="boardCommentDto"/>
 	</typeAliases>
 
 	<!-- sql 문을 정의하고 있는 xml 문서 정보 -->
 	<mappers>
 		<mapper resource="com/spring/unde/mybatis/BoardMapper.xml"/>
 		<mapper resource="com/spring/unde/mybatis/PhotoMapper.xml"/>
+		<mapper resource="com/spring/unde/mybatis/BoardCommentMapper.xml"/>
 	</mappers>
 </configuration>
 
