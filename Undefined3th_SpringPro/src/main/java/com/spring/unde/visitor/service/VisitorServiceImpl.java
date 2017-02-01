@@ -34,18 +34,21 @@ public class VisitorServiceImpl implements VisitorService{
 			request.setAttribute("keyword", keyword);
 		}
 		
-		/*//보여줄 페이지의 번호가 파라미터로 전달되는지 읽어온다.
+		//보여줄 페이지의 번호가 파라미터로 전달되는지 읽어온다.
 		String strPageNum=request.getParameter("pageNum");
 		if(strPageNum != null){//페이지 번호가 파라미터로 넘어온다면
 			//페이지 번호를 설정한다.
 			pageNum=Integer.parseInt(strPageNum);
-		}*/
+		}
+		
+		
 		//보여줄 페이지 데이터의 시작 ResultSet row 번호
 		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
 		//보여줄 페이지 데이터의 끝 ResultSet row 번호
 		int endRowNum=pageNum*PAGE_ROW_COUNT;
 		//전체 row 의 갯수를 DB 에서 얻어온다.
-		int totalRow = visitorDao.getCount();
+		int totalRow = visitorDao.getCount(dto);
+		
 		//전체 페이지의 갯수 구하기
 		int totalPageCount=
 				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
@@ -69,12 +72,12 @@ public class VisitorServiceImpl implements VisitorService{
 		mView.addObject("list", list);
 		// 현재 페이지 번호
 		mView.addObject("pageNum", pageNum);
-		mView.addObject("startpageNum", startPageNum);
-		mView.addObject("endpageNum", endPageNum);
+		mView.addObject("startPageNum", startPageNum);
+		mView.addObject("endPageNum", endPageNum);
 		// 현재 페이지의 갯수
 		mView.addObject("totalPageCount", totalPageCount);
-		return mView;
 		
+		return mView;
 	}
 
 	@Override

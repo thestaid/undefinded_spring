@@ -48,8 +48,8 @@ public class VisitorDaoImpl implements VisitorDao {
 	}
 
 	@Override
-	public int getCount() {
-		int count=session.selectOne("board.getCount");
+	public int getCount(VisitorDto dto) {
+		int count=session.selectOne("visitor.getCount", dto);
 		return count;
 	}
 

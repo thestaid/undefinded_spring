@@ -11,5 +11,5 @@ public interface VisitorDao {
 	public VisitorDto getDataform(int num);
 	public void update(VisitorDto dto);
 	public void delete(int num);
-	public int getCount();
+	public int getCount(VisitorDto dto);
 }

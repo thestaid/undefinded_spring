@@ -9,8 +9,7 @@ public class VisitorDto {
 	
 	private int startRowNum; //시작 row 번호
 	private int endRowNum;   //끝 row 번호
-	private int prevNum;     //이전 글의 글번호
-	private int nextNum;     //다음 글의 글번호 	
+	
 	
 	public VisitorDto(){}
 	
@@ -23,8 +22,7 @@ public class VisitorDto {
 		this.regdate = regdate;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
-		this.prevNum = prevNum;
-		this.nextNum = nextNum;
+		
 	}
 
 	public int getNum() {
@@ -51,14 +49,7 @@ public class VisitorDto {
 		this.content = content;
 	}
 
-	public String getTarget_id() {
-		return target_id;
-	}
-
-	public void setTarget_id(String target_id) {
-		this.target_id = target_id;
-	}
-
+	
 	public String getRegdate() {
 		return regdate;
 	}
@@ -81,22 +72,6 @@ public class VisitorDto {
 
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
-	}
-
-	public int getPrevNum() {
-		return prevNum;
-	}
-
-	public void setPrevNum(int prevNum) {
-		this.prevNum = prevNum;
-	}
-
-	public int getNextNum() {
-		return nextNum;
-	}
-
-	public void setNextNum(int nextNum) {
-		this.nextNum = nextNum;
 	}
 
 	

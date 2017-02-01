@@ -148,45 +148,7 @@
 		</c:forEach>	
 	</div>
 	<!-- 페이지 디스플레이 출력 -->
-	<div style="text-align: center; clear: both;">
-		<ul class="pagination">
-			<c:choose>
-				<c:when test="${startPageNum ne 1 }">
-					<li><a
-						href="visitors.do?pageNum=${startPageNum-1 }&keyword=${keyword}">&laquo;</a>
-					</li>
-				</c:when>
-				<c:otherwise>
-					<li class="disabled"><a href="javascript:">&laquo;</a></li>
-				</c:otherwise>
-			</c:choose>
-			<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
-				<c:choose>
-					<c:when test="${i eq pageNum }">
-						<li class="active"><a
-							href="visitors.do?pageNum=${i }&keyword=${keyword}">${i }</a>
-						</li>
-					</c:when>
-					<c:otherwise>
-						<li><a
-							href="visitors.do?pageNum=${i }&keyword=${keyword}">${i }</a>
-						</li>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<c:choose>
-				<c:when test="${endPageNum lt totalPageCount }">
-					<li><a
-						href="visitors.do?pageNum=${endPageNum+1 }&keyword=${keyword}">&raquo;</a>
-					</li>
-				</c:when>
-				<c:otherwise>
-					<li class="disabled"><a href="javascript:">&raquo;</a></li>
-				</c:otherwise>
-			</c:choose>
-		</ul>
-	</div>
-	<%-- <div style="text-align: center;margin-top:30px;">
+	<div style="text-align: center;margin-top:30px;">
 		<ul class="pagination" style="margin:0 auto;">
 			<c:choose>
 				<c:when test="${pageNum ne 1 }">
@@ -197,13 +159,18 @@
 					<li class="disabled"><a class="muted glyphicon glyphicon-chevron-left" href="javascript:" ></a></li>
 				</c:otherwise>
 			</c:choose>		
+			
+			
 			<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 				<c:choose>
 					<c:when test="${i eq pageNum }">
 						<li class="active"><a href="visitors.do?pageNum=${i }&keyword=${keyword}">${i }</a></li>
+						<script>
+							console.log("${startPageNum}");
+						</script>
 					</c:when>
 					<c:otherwise>
-						<li><a href="visitors.do?pageNum=${i }&keyword=${keyword}">${i }</a></li>
+						<li><a href="visitors.do?pageNum=${i } &keyword=${keyword}">${i }</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -212,12 +179,12 @@
 					<li><a href="visitors.do?pageNum=${pageNum+1 }&keyword=${keyword}" class="glyphicon glyphicon-chevron-right"></a></li>
 				</c:when>
 				<c:otherwise>
-					<li class="disabled"><a class="muted glyphicon glyphicon-chevron-right" href="jsvascript:"></a></li>
+					<li class="disabled"><a class="muted glyphicon glyphicon-chevron-right" href="javascript:"></a></li>
 				</c:otherwise>
 			</c:choose>					
 		</ul>	
 		</div>	
-	</div>		 --%>
+	</div>		 
 	
 	<script>
 		//글 작성시 로그인을 안했을 경우 폼전송을 막는다.

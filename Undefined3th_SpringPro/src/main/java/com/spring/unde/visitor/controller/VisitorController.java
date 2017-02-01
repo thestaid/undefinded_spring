@@ -22,6 +22,7 @@ public class VisitorController {
 	//만일 안넘어오면 default 값으로 1을 넣어준다.
 	@RequestMapping("/visitor/visitors")
 	public ModelAndView list(HttpServletRequest request, @RequestParam(defaultValue="1") int pageNum){
+		
 		ModelAndView mView=visitorService.getList(request, pageNum);
 		
 		mView.setViewName("visitor/visitors");

@@ -57,7 +57,7 @@
 		DELETE FROM visitor_comment WHERE num=#{num}
 	</delete>
 	
-	<select id="getCount" resultType="int">
+	<select id="getCount" resultType="int" parameterType="visitorDto">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM visitor_comment
 		<where>
