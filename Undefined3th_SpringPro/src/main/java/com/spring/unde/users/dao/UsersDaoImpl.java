@@ -81,4 +81,25 @@ public class UsersDaoImpl implements UsersDao{
 		return count;
 	}
 
+	@Override
+	public boolean pwdSearch(UsersDto dto) {
+		boolean isMatching=false;
+		UsersDto resultDto=session.selectOne("users.pwdSearch", dto);
+		if(resultDto==null){
+			isMatching=false;
+		}else{
+			isMatching=true;
+		}
+		return isMatching;
+	}
+
+	@Override
+	public boolean pwdupdate(UsersDto dto) {
+		boolean isSuccess=false;
+		try{		
+			session.update("users.pwdupdate", dto);
+			isSuccess=true;
+		}catch(Exception e){isSuccess=false;}		
+		return isSuccess;
+	}
 }

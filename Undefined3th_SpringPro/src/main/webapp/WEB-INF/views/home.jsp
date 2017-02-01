@@ -15,5 +15,7 @@
 <div class="mainContent">
 	<img src="<%=request.getContextPath() %>/resources/images/backbg.png" style="width:100%; height:100%"/>
 </div>
+<script>
+</script>
 </body>
 </html>

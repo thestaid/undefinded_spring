@@ -150,4 +150,20 @@ public class UsersServiceImpl implements UsersService{
 		return mView;		
 	}
 
+	@Override
+	public boolean pwdSearch(UsersDto dto) {
+		boolean isMatching=usersDao.pwdSearch(dto);
+		return isMatching;
+	}
+
+	@Override
+	public boolean pwdupdate(UsersDto dto) {
+		//암포화된 비밀번호를 얻어낸다.
+		String encodePwd=pEncoder.encode(dto.getPwd());
+		//Dto  객체에 다시 넣어준다.
+		dto.setPwd(encodePwd);			
+		boolean isSuccess=usersDao.pwdupdate(dto);
+		return isSuccess;
+	}
+
 }

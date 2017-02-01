@@ -13,4 +13,6 @@ public interface UsersDao {
 	public UsersDto getData(String id);
 	public List<UsersDto> getList(UsersDto dto);
 	public int getCount(UsersDto dto);
+	public boolean pwdSearch(UsersDto dto);
+	public boolean pwdupdate(UsersDto dto);
 }

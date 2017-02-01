@@ -20,7 +20,7 @@
 	<div class="mainContent">
 		<form action="update.do" method="post" class="form-group" id="updateForm" 
 			style="margin:0 auto;width:500px;vertical-align:middle; ">
-			<h3>회원가입</h3>
+			<h3>회원 정보 수정</h3>
 			<div class="form-group">		
 				<input type="hidden" name="id"  class="form-control" value="${dto.id }"/>
 				<label class="control-label" for="id">아이디</label>

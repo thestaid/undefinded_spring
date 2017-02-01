@@ -17,4 +17,6 @@ public interface UsersService {
 	public Map<String, Object> canUseId(String id);
 	public ModelAndView getData(String id);
 	public ModelAndView getList(HttpServletRequest request, int pageNum);
+	public boolean pwdSearch(UsersDto dto);
+	public boolean pwdupdate(UsersDto dto);
 }

@@ -179,4 +179,48 @@ public class UsersController {
 		//리턴해준다.
 		return mView;
 	}
+	
+	@RequestMapping("/users/pwdSearchForm")
+	public String pwdSearchForm(HttpServletRequest request, @RequestParam String uri){
+		request.setAttribute("uri", uri);
+		return "users/pwdSearch_form";
+	}	
+	
+	@RequestMapping("/users/pwdSearch")
+	public ModelAndView pwdSearch(HttpServletRequest request,@ModelAttribute UsersDto dto, @RequestParam String uri){
+		boolean isMatching=usersService.pwdSearch(dto);
+		ModelAndView mView=new ModelAndView();
+		if(isMatching){
+			mView.addObject("alertMess", "비밀번호 찾기 정보를 확인했습니다.. 비밀번호 정보를 수정해주세요.");
+			String path=request.getContextPath()+"/users/pwdSearchUpdateform.do?uri="+uri+"&id="+dto.getId();
+			mView.addObject("redirectUri", path);
+		}else{
+			mView.addObject("alertMess", "비밀번호 찾기  정보가 일치하지 않습니다. 확인 해주세요.");
+			String path=request.getContextPath()+"/users/pwdSearchForm.do?uri="+uri;
+			mView.addObject("redirectUri", path);
+		}		
+		mView.setViewName("alert");
+		return mView;
+	}
+	
+	@RequestMapping("/users/pwdSearchUpdateform")
+	public String pwdSearchUpdateform(HttpServletRequest request, @RequestParam String uri, @RequestParam String id){
+		request.setAttribute("uri", uri);
+		request.setAttribute("checkId", id);
+		return "users/pwdSearchUpdate_form";
+	}	
+	
+	@RequestMapping("/users/pwdUpdate")
+	public ModelAndView pwdSearchUpdate(HttpServletRequest request,@ModelAttribute UsersDto dto, @RequestParam String uri){
+		boolean isSuccess=usersService.pwdupdate(dto);
+		ModelAndView mView=new ModelAndView();
+		if(isSuccess){
+			mView.addObject("alertMess", dto.getId()+"님 비밀번호를 변경했습니다.");
+		}else{
+			mView.addObject("alertMess", "비밀번호 변경을 실패하였습니다.");
+		}
+		mView.addObject("redirectUri", uri);
+		mView.setViewName("alert");
+		return mView;
+	}
 }

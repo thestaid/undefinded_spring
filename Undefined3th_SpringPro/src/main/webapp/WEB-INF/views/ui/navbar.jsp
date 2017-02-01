@@ -36,7 +36,7 @@ body ul.menu a:hover {
   color: #EEE !important;
   cursor: pointer;
 }
-.signinfo{font-size: 40px;}
+.signinfo{font-size: 30px;}
 .mainContent{
 	position:absolute;
 	top:0%;
@@ -64,6 +64,7 @@ body ul.menu a:hover {
     	<c:when test="${empty id }">
 		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/signin_form.do?uri=${pageContext.request.contextPath }" class=signinfo>로그인</a></li>
 		    <li><a href="${pageContext.request.contextPath }/users/signup_form.do?uri=${pageContext.request.contextPath }" class=signinfo>회원가입</a></li>    	
+    		<li><a href="${pageContext.request.contextPath }/users/pwdSearchForm.do?uri=${pageContext.request.contextPath }" class=signinfo>비밀번호 찾기</a></li>
     	</c:when>
 		<c:otherwise>
 		    <li style="margin-top:100px">

@@ -4,11 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8"/>
-<title>회원가입 폼입니다.</title>
+<title>회원가입 페이지</title>
 <style>
-	strong{
-		color:blue;
-	}
 	.signupForm{
 		width: 30%;
 		margin-top:200px;
@@ -25,7 +22,7 @@
 	<div class="mainContent">
 	<%--회원가입하면 원래 요청한 페이지의 uri값을 파라미터로 들고간다. --%>
 		<form action="signup.do?uri=${uri }" method="post" class="signupForm">
-			<h3><strong>회원가입</strong></h3>
+			<h3><strong style="color: blue">회원가입</strong></h3>
 			<div class="form-group has-feedback">
 				<label class="control-label" for="id">아이디</label>
 				<input class="form-control" type="text" 

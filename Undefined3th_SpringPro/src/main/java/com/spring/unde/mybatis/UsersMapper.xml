@@ -56,7 +56,14 @@
 		  		OR email LIKE '%'||#{email}||'%'
 		  	</if>
 		</where>
-	</select>				
+	</select>	
+	<select id="pwdSearch" parameterType="usersDto" resultType="usersDto">
+		SELECT * FROM unde_users 
+		WHERE id=#{id} AND answer=#{answer} AND aw=#{aw}
+	</select>	
+	<update id="pwdupdate" parameterType="usersDto">
+		UPDATE unde_users SET pwd=#{pwd} WHERE id=#{id}
+	</update>		
 </mapper>
 
 
