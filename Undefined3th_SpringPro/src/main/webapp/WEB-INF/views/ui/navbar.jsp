@@ -36,7 +36,7 @@ body ul.menu a:hover {
   color: #EEE !important;
   cursor: pointer;
 }
-.signinfo{font-size: 40px;}
+.signinfo{font-size: 30px;}
 .mainContent{
 	position:absolute;
 	top:0%;
@@ -50,10 +50,10 @@ body ul.menu a:hover {
 <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
 <ul class="menu">
     <li><a href="${pageContext.request.contextPath }/home.do">Home</a></li>
-    <li><a href="${pageContext.request.contextPath }/board/list.do">Board</a></li>
-    <li><a href="${pageContext.request.contextPath }/archive/list.do">Photo</a></li>
-    <li><a href="${pageContext.request.contextPath }/visitor/visitors.do">Visitor</a></li>
-    <li><a href="${pageContext.request.contextPath }/chat/chats.do">Chat</a></li>
+    <li id="nav_board"><a href="${pageContext.request.contextPath }/board/list.do">Board</a></li>
+    <li id="nav_photo"><a href="${pageContext.request.contextPath }/archive/list.do">Photo</a></li>
+    <li id="nav_visitor"><a href="${pageContext.request.contextPath }/visitor/visitors.do">Visitor</a></li>
+    <li id="nav_chat"><a href="${pageContext.request.contextPath }/chat/chats.do">Chat</a></li>
     <li 
     	<c:if test="${id ne 'admin'}">style="display:none;"</c:if> 
     		id="navbarAdmin" 
@@ -62,11 +62,17 @@ body ul.menu a:hover {
     </li>
     <c:choose>
     	<c:when test="${empty id }">
-		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/signin.do" class=signinfo>로그인</a></li>
-		    <li><a href="${pageContext.request.contextPath }/users/signup.do" class=signinfo>회원가입</a></li>    	
+		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/signin_form.do?uri=${pageContext.request.contextPath }" class=signinfo>로그인</a></li>
+		    <li><a href="${pageContext.request.contextPath }/users/signup_form.do?uri=${pageContext.request.contextPath }" class=signinfo>회원가입</a></li>    	
+    		<li><a href="${pageContext.request.contextPath }/users/pwdSearchForm.do?uri=${pageContext.request.contextPath }" class=signinfo>비밀번호 찾기</a></li>
     	</c:when>
 		<c:otherwise>
-		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/private/info.do?id=${id}" class=signinfo>님 로그인중</a></li>
+		    <li style="margin-top:100px">
+		    	<a href="${pageContext.request.contextPath }/users/private/info.do?id=${id}" class=signinfo >
+		    		<strong><span class="glyphicon glyphicon-user"></span> ${id } </strong>
+		    		<span style="font-size: 20px;">님</span>
+		    	</a>
+		    </li>
 		    <li><a href="${pageContext.request.contextPath }/users/signout.do" class=signinfo>로그아웃</a></li>		
 		</c:otherwise>
     </c:choose>

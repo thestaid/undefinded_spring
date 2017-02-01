@@ -1,3 +1,4 @@
+
 //게시판 SQL문
 CREATE TABLE member_board(
 num NUMBER PRIMARY KEY,
@@ -9,3 +10,14 @@ regdate DATE
 );
 
 CREATE SEQUENCE member_board_seq NOCACHE;
+
+CREATE TABLE unde_users(
+id VARCHAR2(100) PRIMARY KEY, 
+pwd VARCHAR2(100) NOT NULL, 
+email VARCHAR2(100) NOT NULL,
+regdate DATE,
+answer NUMBER NOT NULL,
+aw VARCHAR2(1000) NOT NULL
+);
+
+CREATE SEQUENCE unde_users_seq NOCACHE;

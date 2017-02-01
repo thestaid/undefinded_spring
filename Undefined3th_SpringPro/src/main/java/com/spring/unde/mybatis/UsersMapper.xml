@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+	<sql id="dateFormat">
+		TO_CHAR(regdate,'YYYY"년"MM"월"DD"일" HH24:MI') regdate
+	</sql>
+	<select id="getData" parameterType="String" 
+			resultType="usersDto">
+		SELECT id, pwd, email, <include refid="dateFormat"/>
+		FROM unde_users
+		WHERE id=#{id}
+	</select>		
+	<select id="isExistId" parameterType="String" resultType="String">
+		SELECT id FROM unde_users WHERE id=#{id}
+	</select>
+	<insert id="insert" parameterType="usersDto">
+		INSERT INTO unde_users (id, pwd, email, regdate, answer, aw) 
+		VALUES(#{id}, #{pwd}, #{email}, SYSDATE, #{answer}, #{aw})
+	</insert>		
+	<select id="getPwd" parameterType="String" resultType="String">
+		SELECT pwd FROM unde_users 
+		WHERE id=#{id}
+	</select>	
+	<update id="update" parameterType="usersDto">
+		UPDATE unde_users  SET pwd=#{pwd}, email=#{email} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM unde_users  WHERE id=#{id}
+	</delete>
+	<select id="getList" parameterType="usersDto" resultType="usersDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM rnum
+			FROM (SELECT id,email
+				  FROM unde_users
+				  <where>
+				  	<if test="id != null">
+				  		OR id LIKE '%'||#{id}||'%'
+				  	</if>
+				  	<if test="email != null">
+				  		OR email LIKE '%'||#{email}||'%'
+				  	</if>
+				  </where>
+				  ) result1
+			)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>	
+	<select id="getCount" parameterType="usersDto" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM unde_users
+		<where>
+		  	<if test="id != null">
+		  		OR id LIKE '%'||#{id}||'%'
+		  	</if>
+		  	<if test="email != null">
+		  		OR email LIKE '%'||#{email}||'%'
+		  	</if>
+		</where>
+	</select>	
+	<select id="pwdSearch" parameterType="usersDto" resultType="usersDto">
+		SELECT * FROM unde_users 
+		WHERE id=#{id} AND answer=#{answer} AND aw=#{aw}
+	</select>	
+	<update id="pwdupdate" parameterType="usersDto">
+		UPDATE unde_users SET pwd=#{pwd} WHERE id=#{id}
+	</update>		
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

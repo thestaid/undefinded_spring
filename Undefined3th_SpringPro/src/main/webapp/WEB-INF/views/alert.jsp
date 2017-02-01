@@ -9,9 +9,9 @@
 <title>처리중입니다.</title>
 </head>
 <body>
-   <script>
-      alert("${alertMess}");
-      location.href="${redirectUri}";
-   </script>
+	<script>
+		alert("${alertMess}");
+		location.href="${redirectUri}";
+	</script>
 </body>
 </html>
