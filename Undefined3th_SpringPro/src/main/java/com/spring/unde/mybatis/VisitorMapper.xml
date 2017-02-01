@@ -46,13 +46,4 @@
 		DELETE FROM visitor_comment WHERE num=#{num}
 	</delete>
 	
-	<select id="getCount" resultType="int">
-		SELECT NVL(MAX(ROWNUM), 0)
-		FROM visitor_comment
-		<where>
-		 	<if test="writer != null">
-		  		OR writer LIKE '%'||#{writer}||'%'
-		  	</if>
-		</where>		
-	</select>	
 </mapper>

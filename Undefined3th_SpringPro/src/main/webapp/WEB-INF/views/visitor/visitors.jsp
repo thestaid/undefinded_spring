@@ -112,7 +112,7 @@
 						<form action="update.do?num=${tmp.num }&keyword=${keyword}" method="post" class="commentUpdateForm" id="visitorUpdateFrom${tmp.num }">
 							<input type="hidden" value="${tmp.num }" name="num" id="updateNum${tmp.num }"/>								
 							<div class="form-group" style="margin-bottom:3px;">
-								<textarea class="form-control" name="content2" id="content2${tmp.num }" style="width:99%;height:100px;"></textarea>										
+								<textarea class="form-control" name="content" id="content2${tmp.num }" style="width:99%;height:100px;"></textarea>										
 							</div>				
 							<div>
 								<button type="submit" class="btn btn-default pull-right" id="visitorUpdateBtn">
@@ -143,7 +143,7 @@
 					if(isDelete){
 						location.href="${pageContext.request.contextPath }/visitor/delete.do?num=${tmp.num }";
 					}					
-				}
+				};
 			</script>										
 		</c:forEach>	
 	</div>
