@@ -14,5 +14,6 @@ public interface VisitorService {
 	public ModelAndView updateForm(int num);
 	public void delete(int num);
 	
+	public void getCount(VisitorDto dto);
 	
 }

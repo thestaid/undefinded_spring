@@ -73,8 +73,8 @@
 		<div class="insertform">
 			<%-- 아이디 로그인시 default값에서 로그인 아이디로 바뀐다. --%>
 			<form action="insert.do" method="post" class="commentInsertForm">
-				<input type="hidden" name="writer" value="gura<%-- <c:choose><c:when test="${empty id}">로그인 하시면 글 작성이 가능해요 :)</c:when><c:otherwise>${id }</c:otherwise></c:choose> --%>"/>
-				<input type="text" id="visitorId" value="gura<%-- <c:choose><c:when test="${empty id}">로그인 하시면 글 작성이 가능해요 :)</c:when><c:otherwise>&nbsp ${id }</c:otherwise></c:choose> --%>" disabled="disabled"/>
+				<input type="hidden" name="writer" value="test<%-- <c:choose><c:when test="${empty id}">로그인 하시면 글 작성이 가능해요 :)</c:when><c:otherwise>${id }</c:otherwise></c:choose> --%>"/>
+				<input type="text" id="visitorId" value="test<%-- <c:choose><c:when test="${empty id}">로그인 하시면 글 작성이 가능해요 :)</c:when><c:otherwise>&nbsp ${id }</c:otherwise></c:choose> --%>" disabled="disabled"/>
 				<div class="form-group" style="margin-bottom:3px;">
 					<textarea class="form-control" name="content" id="content" style="width:100%;height:150px;"></textarea>										
 				</div>				
@@ -103,7 +103,7 @@
 				<div class="commentFooter">
 					
 					<%-- 아이디가 admin이거나 글의 주인일 경우 삭제와 수정을 가능하게 하기위한 처리 --%>
-					<c:if test="${id eq 'admin' or id eq tmp.writer or 'gura' eq tmp.writer}">	<!-- 수정사항 : 임시계정 부여 -->
+					<c:if test="${id eq 'admin' or id eq tmp.writer or 'test' eq tmp.writer}">	<!-- 수정사항 : 임시계정 부여 -->
 						<a href="javascript:deleteConfirm${tmp.num }()" class="pull-right commentFooter_a" style="margin-left:5px">삭제</a>
 						<a href="javascript:updateform${tmp.num }()" class="pull-right commentFooter_a">수정</a><br/>					
 					</c:if>

@@ -9,9 +9,14 @@
 		#{writer}, #{content}, SYSDATE)
 	</select>
 	
-	<select id="getList" resultType="visitorDto">
-		SELECT num,writer,content, regdate
-	    FROM visitor_comment
+	<select id="getList" resultType="visitorDto" parameterType="visitorDto">
+		SELECT num,writer,content,regdate
+		FROM visitor_comment
+		<where>
+		 	<if test="writer != null">
+		  		OR writer LIKE '%'||#{writer}||'%'
+		  	</if>
+		</where>				  
 		ORDER BY num DESC
 							
 	</select>	
@@ -46,4 +51,13 @@
 		DELETE FROM visitor_comment WHERE num=#{num}
 	</delete>
 	
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM visitor_comment
+		<where>
+		 	<if test="writer != null">
+		  		OR writer LIKE '%'||#{writer}||'%'
+		  	</if>
+		</where>		
+	</select>	
 </mapper>

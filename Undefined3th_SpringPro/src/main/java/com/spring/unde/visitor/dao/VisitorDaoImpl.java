@@ -1,6 +1,6 @@
 package com.spring.unde.visitor.dao;
 
-import java.util.List;
+import java.util.List;	
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,8 @@ public class VisitorDaoImpl implements VisitorDao {
 	}
 
 	@Override
-	public List<VisitorDto> getList() {
-		List<VisitorDto> list = session.selectList("visitor.getList");
+	public List<VisitorDto> getList(VisitorDto dto) {
+		List<VisitorDto> list = session.selectList("visitor.getList", dto);
 		return list;
 	}
 
@@ -45,6 +45,12 @@ public class VisitorDaoImpl implements VisitorDao {
 	@Override
 	public void delete(int num) {
 		session.delete("visitor.delete", num);
+	}
+
+	@Override
+	public int getCount(VisitorDto dto) {
+		/*session.getCount("visitor.getCount", dto);*/
+		return 0;
 	}
 
 
