@@ -1,9 +1,8 @@
 package com.spring.unde.visitor.service;
 
-import java.util.List;		
+import java.util.List;			
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -81,13 +80,13 @@ public class VisitorServiceImpl implements VisitorService{
 	}
 
 	@Override
-	public ModelAndView getData(int num) {
-		VisitorDto dto = visitorDao.getData(num);
+	public ModelAndView getData(VisitorDto dto) {
+		VisitorDto resultdto = visitorDao.getData(dto);
 		ModelAndView mView = new ModelAndView();
-		mView.addObject("dto", dto);
+		mView.addObject("dto", resultdto);
 		return mView;
 	}
-	
+		
 	@Override
 	public void insert(VisitorDto dto) {
 		visitorDao.insert(dto);		
@@ -100,9 +99,10 @@ public class VisitorServiceImpl implements VisitorService{
 	
 	@Override
 	public ModelAndView updateForm(int num) {
-		VisitorDto dto = visitorDao.getData(num);
+		VisitorDto dto = visitorDao.getDataform(num);
 		ModelAndView mView = new ModelAndView();
 		mView.addObject("dto", dto);
+		System.out.println(dto.getContent());
 		return mView;
 	}
 	

@@ -26,14 +26,14 @@ public class VisitorDaoImpl implements VisitorDao {
 	}
 
 	@Override
-	public VisitorDto getData(int num) {
-		VisitorDto resultdto = session.selectOne("visitor.getData");
+	public VisitorDto getData(VisitorDto dto) {
+		VisitorDto resultdto = session.selectOne("visitor.getData", dto);
 		return resultdto;
 	}
 
 	@Override
 	public VisitorDto getDataform(int num) {
-		VisitorDto resultdto = session.selectOne("visitor.getDataform");
+		VisitorDto resultdto = session.selectOne("visitor.getDataform", num);
 		return resultdto;
 	}
 
@@ -52,6 +52,7 @@ public class VisitorDaoImpl implements VisitorDao {
 		int count=session.selectOne("visitor.getCount", dto);
 		return count;
 	}
+
 
 
 

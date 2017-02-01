@@ -50,10 +50,10 @@ public class VisitorController {
 		//수정할 글의 정보가 담긴 ModelAndView 객체를 리턴받는다
 	ModelAndView mView= visitorService.updateForm(num);
 	//view 페이지 정보 설정하고
-	mView.setViewName("visitor/private/updateform");
+	mView.setViewName("visitor/updateform");
 	//리턴해준다
-			return mView;   
-	   }
+		return mView;   
+	}
 	
 	@RequestMapping("/visitor/update")
 	public ModelAndView authUpdate(@ModelAttribute VisitorDto dto){
