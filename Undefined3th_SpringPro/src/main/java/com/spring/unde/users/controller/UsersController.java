@@ -116,16 +116,21 @@ public class UsersController {
 	// "/users/private/delete.do" 개인정보 삭제 요청 처리
 	@RequestMapping("/users/private/delete")
 	public ModelAndView authdelete(HttpServletRequest request){
-		//세션에 저장된 아이디 값을 읽어온다.
-		String id=(String)request.getSession().getAttribute("id");
+		String id=request.getParameter("id");
 		//서비스를 이용해서 DB에서 회원정보를 삭제하고
 		boolean isSuccess=usersService.delete(id);
 		String redirectUri="";
 		ModelAndView  mView=new ModelAndView();
 		if(isSuccess){
-			request.getSession().invalidate();
-			mView.addObject("alertMess", "탈퇴되었습니다.");
-			redirectUri=request.getContextPath();
+			String sessionId=(String)request.getSession().getAttribute("id");
+			if(sessionId.equals("admin")){
+	            request.setAttribute("alertMess", "탈퇴되엇어요.");
+	            redirectUri=request.getContextPath()+"/admin/list.do";
+	         }else{
+	 			request.getSession().invalidate();
+				mView.addObject("alertMess", "탈퇴되었습니다.");
+				redirectUri=request.getContextPath();	        	 
+	         }
 		}else{
 			mView.addObject("alertMess", "탈퇴 실패되었습니다.");
 			redirectUri=request.getContextPath()+"/users/private/info.do?id="+id;				
@@ -138,9 +143,13 @@ public class UsersController {
 	// "/users/private/update.do" 개인정보 수정 요청 처리
 	@RequestMapping("/users/private/update")
 	public ModelAndView authupdate(HttpServletRequest request,@ModelAttribute UsersDto dto){
-		usersService.update(dto);
+		boolean isSuccess=usersService.update(dto);
 		ModelAndView mView=new ModelAndView();
-		mView.addObject("msg", dto.getId()+"님 회원 정보 수정했습니다.");
+		if(isSuccess){
+			mView.addObject("alertMess", dto.getId()+"님 회원 정보 수정했습니다.");
+		}else{
+			mView.addObject("alertMess", "수정실패하였습니다.");
+		}
 		String path=request.getContextPath()+"/users/private/info.do";
 		mView.addObject("redirectUri", path);
 		mView.setViewName("alert");
@@ -160,5 +169,14 @@ public class UsersController {
 		return mView;
 	}
 	
-
+	@RequestMapping("/admin/list")
+	public ModelAndView authAdminList(HttpServletRequest request ,@RequestParam(defaultValue="1") int pageNum){
+		
+		//글목록이 담겨 있는 ModelAndView 객체를 리턴 받는다
+		ModelAndView mView=usersService.getList(request, pageNum);
+		//뷰페이지의 정보 설정하고
+		mView.setViewName("users/private/list");
+		//리턴해준다.
+		return mView;
+	}
 }

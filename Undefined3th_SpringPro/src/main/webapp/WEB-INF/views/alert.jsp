@@ -10,7 +10,7 @@
 </head>
 <body>
 	<script>
-		alert("${alertMess}"+"${redirectUri}");
+		alert("${alertMess}");
 		location.href="${redirectUri}";
 	</script>
 </body>

@@ -11,5 +11,6 @@ public interface UsersDao {
 	public boolean delete(String id);
 	public boolean canUseId(String id); 
 	public UsersDto getData(String id);
-	public List<UsersDto> getList();
+	public List<UsersDto> getList(UsersDto dto);
+	public int getCount(UsersDto dto);
 }
