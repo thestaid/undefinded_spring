@@ -21,6 +21,7 @@
 		<beans:property name="password" value="${password}"/>
 	</beans:bean>
 	
+	
 	<!-- SqlSessionFactory 객체 -->
 	<beans:bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"/>
@@ -44,7 +45,8 @@
 		class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="0"/>
 	</beans:bean>
-
+	
+	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -59,9 +61,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	
 	<context:component-scan base-package="com.spring.unde" />
 	<context:component-scan base-package="com.spring.unde.board.*" />
-	
-	
+	<context:component-scan base-package="com.spring.unde.photo.*" />
 	
 </beans:beans>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="photo">
+	<sql id="photoColumns">
+		num, title, writer, orgFileName, fileSize,
+		TO_CHAR(regdate,
+		'YY.MM.DD HH24:MI') AS regdate
+	</sql>
+	<select id="getList" resultType="photoDto" parameterType="photoDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM rnum
+			FROM (SELECT num, writer, title, orgFileName, saveFileName, fileSize, regdate
+				  FROM board_data
+				  <where>
+				  	<if test="writer != null">
+				  		OR writer LIKE '%'||#{writer}||'%'
+				  	</if>
+				  	<if test="title != null">
+				  		OR title LIKE '%'||#{title}||'%'
+				  	</if>
+				  	<if test="orgFileName != null">
+				  		OR orgFileName LIKE '%'||#{orgFileName}||'%'
+				  	</if>
+				  </where>
+				  ORDER BY num DESC
+				  ) result1
+			)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>	
+	
+	<select id="getData" parameterType="int" resultType="photoDto">
+		SELECT num,writer,title,orgFileName,saveFileName,fileSize,regdate
+		FROM board_data
+		WHERE num=#{num}
+	</select>
+	
+	<insert id="upload" parameterType="photoDto">
+		INSERT INTO board_data
+		(num, writer, title, orgFileName, saveFileName, fileSize, regdate)
+		VALUES(board_data_seq.NEXTVAL,
+		 #{writer}, #{title}, #{orgFileName}, #{saveFileName}, #{fileSize}, SYSDATE)
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM board_data
+		WHERE num=#{num}
+	</delete>
+	
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM board_data
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

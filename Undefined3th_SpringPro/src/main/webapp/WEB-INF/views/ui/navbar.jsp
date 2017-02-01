@@ -51,7 +51,7 @@ body ul.menu a:hover {
 <ul class="menu">
     <li><a href="${pageContext.request.contextPath }/home.do">Home</a></li>
     <li><a href="${pageContext.request.contextPath }/board/list.do">Board</a></li>
-    <li><a href="${pageContext.request.contextPath }/archive/list.do">Photo</a></li>
+    <li><a href="${pageContext.request.contextPath }/photo/list.do">Photo</a></li>
     <li><a href="${pageContext.request.contextPath }/visitor/visitors.do">Visitor</a></li>
     <li><a href="${pageContext.request.contextPath }/chat/chats.do">Chat</a></li>
     <li 
