@@ -21,7 +21,7 @@ public class VisitorController {
 	//파라미터로 페이지 번호가 넘어올수도 있고 안넘어 올 수도 있다.
 	//만일 안넘어오면 default 값으로 1을 넣어준다.
 	@RequestMapping("/visitor/visitors")
-	public ModelAndView list(HttpServletRequest request, int pageNum){
+	public ModelAndView list(HttpServletRequest request, @RequestParam(defaultValue="1") int pageNum){
 		ModelAndView mView=visitorService.getList(request, pageNum);
 		
 		mView.setViewName("visitor/visitors");
