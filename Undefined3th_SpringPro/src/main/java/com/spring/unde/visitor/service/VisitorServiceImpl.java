@@ -107,12 +107,6 @@ public class VisitorServiceImpl implements VisitorService{
 	public void delete(int num) {
 		visitorDao.delete(num);
 	}
-
-	@Override
-	public void getCount(VisitorDto dto) {
-		visitorDao.getCount();
-	}
-	
 	
 
 }
