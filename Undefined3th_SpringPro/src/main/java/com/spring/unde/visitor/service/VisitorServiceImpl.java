@@ -24,7 +24,7 @@ public class VisitorServiceImpl implements VisitorService{
 	private VisitorDao visitorDao; 
 	
 	@Override
-	public ModelAndView getList(HttpServletRequest request) {
+	public ModelAndView getList(HttpServletRequest request, int pageNum) {
 		//검색과 관련된 파라미터를 읽어와 본다.
 		String keyword=request.getParameter("keyword");
 		VisitorDto dto=new VisitorDto();
@@ -34,8 +34,6 @@ public class VisitorServiceImpl implements VisitorService{
 			request.setAttribute("keyword", keyword);
 		}
 		
-		//보여줄 페이지의 번호
-		int pageNum=1;
 		//보여줄 페이지의 번호가 파라미터로 전달되는지 읽어온다.
 		String strPageNum=request.getParameter("pageNum");
 		if(strPageNum != null){//페이지 번호가 파라미터로 넘어온다면
@@ -47,7 +45,7 @@ public class VisitorServiceImpl implements VisitorService{
 		//보여줄 페이지 데이터의 끝 ResultSet row 번호
 		int endRowNum=pageNum*PAGE_ROW_COUNT;
 		//전체 row 의 갯수를 DB 에서 얻어온다.
-		int totalRow = VisitorDao.getInstance().getCount(dto);
+		int totalRow = VisitorDao.getCount(dto);
 		//전체 페이지의 갯수 구하기
 		int totalPageCount=
 				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
