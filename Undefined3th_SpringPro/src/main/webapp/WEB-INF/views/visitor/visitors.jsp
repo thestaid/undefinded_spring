@@ -49,7 +49,7 @@
 		width:80%;
 	}
 	.boardListForm{
-		margin:100px 20px 100px 20px;
+		margin:200px 20px 100px 20px;
 		width:60%;
 	}	
 	h3{
@@ -73,10 +73,10 @@
 		<div class="insertform">
 			<%-- 아이디 로그인시 default값에서 로그인 아이디로 바뀐다. --%>
 			<form action="insert.do" method="post" class="commentInsertForm">
-				<input type="hidden" name="writer" value="<c:choose><c:when test="${empty id}">로그인 하시면 글 작성이 가능해요^^</c:when><c:otherwise>${id }</c:otherwise></c:choose>"/>
-				<input type="text" id="visitorId" value="<c:choose><c:when test="${empty id}">로그인 하시면 글 작성이 가능해요^^</c:when><c:otherwise>&nbsp ${id }</c:otherwise></c:choose>" disabled="disabled"/>
+				<input type="hidden" name="writer" value="gura<%-- <c:choose><c:when test="${empty id}">로그인 하시면 글 작성이 가능해요 :)</c:when><c:otherwise>${id }</c:otherwise></c:choose> --%>"/>
+				<input type="text" id="visitorId" value="gura<%-- <c:choose><c:when test="${empty id}">로그인 하시면 글 작성이 가능해요 :)</c:when><c:otherwise>&nbsp ${id }</c:otherwise></c:choose> --%>" disabled="disabled"/>
 				<div class="form-group" style="margin-bottom:3px;">
-					<textarea class="form-control" name="ir1" id="ir1" style="width:100%;height:150px;"></textarea>										
+					<textarea class="form-control" name="content" id="content" style="width:100%;height:150px;"></textarea>										
 				</div>				
 				<div>
 					<button type="submit" class="btn btn-default pull-right" id="visitorInsertBtn"><span class="glyphicon glyphicon-ok" style="color:red;font-size:10px;"></span>확인</button>
@@ -120,29 +120,8 @@
 						</form>			
 					</div>
 				</div>
-			</div>		
-			<script>
-				//업데이트 폼의 ajax 처리
-				function updateform ${tmp.num }(){
-					var num=$("#updateNum${tmp.num }").val();
-					$("#num"+num).toggle();
-					$.ajax({
-						url:"updateform.do",
-						method:"get",
-						data:{"num":num},
-						success:function(data){
-							$("#content2${tmp.num }").text(data);
-						}			
-					});
-				};
-				//삭제시 여부를 묻는 함수
-				function deleteConfirm ${tmp.num }(){
-					var isDelete=confirm("삭제하시겠습니까?");
-					if(isDelete){
-						location.href="${pageContext.request.contextPath }/visitor/delete.do?num=${tmp.num }";
-					}					
-				}
-			</script>					
+			</div>	
+												
 		</c:forEach>	
 	</div>
 	<!-- 페이지 디스플레이 출력 -->
@@ -178,16 +157,17 @@
 		</ul>	
 		</div>	
 	</div>		
+	
 	<script>
 		//글 작성시 로그인을 안했을 경우 폼전송을 막는다.
 		$("#insertBtn").click(function(){
 			var visitorId=$("#visitorId").val();
 			if(visitorId=="로그인 하시면 글 작성이 가능해요^^"){
 				alert("로그인을 해주세요!");
-				$("#ir1").val("");
+				$("#content").val("");
 				return false;
 			}
 		});
-	</script>
+	</script> 
 </body>
 </html>

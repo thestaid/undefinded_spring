@@ -40,8 +40,7 @@ public class VisitorServiceImpl implements VisitorService{
 	
 	@Override
 	public void insert(VisitorDto dto) {
-		visitorDao.insert(dto);
-		
+		visitorDao.insert(dto);		
 	}
 
 	@Override

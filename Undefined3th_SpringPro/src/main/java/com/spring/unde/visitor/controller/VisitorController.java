@@ -26,18 +26,12 @@ public class VisitorController {
 	mView.setViewName("visitor/visitors");
 		return mView;
 	}
-	
-	//새글입력 폼 요청처리
-	@RequestMapping("/visitor/private/insertform")
-	public String insertForm(){
-		return "visitor/private/insertform";
-	}
-	
+		
 	// 새글 저장 요청 처리
-	@RequestMapping("/visitor/private/insert")
+	@RequestMapping("/visitor/insert")
 	public ModelAndView autoInsert(@ModelAttribute VisitorDto dto){
 	   visitorService.insert(dto);
-	   return new ModelAndView("redirect:/visitor/list.do");
+	   return new ModelAndView("redirect:/visitor/visitors.do");
 	}
 	
 	@RequestMapping("/visitor/detail")

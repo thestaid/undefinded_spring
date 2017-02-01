@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="visitor">
+
 	<select id="insert" parameterType="visitorDto">
 		INSERT INTO visitor_comment 
-		(num,writer,content,target_id, regdate) 
+		(num, writer,content, regdate) 
 		VALUES (visitor_seq.NEXTVAL, 
-		#{writer}, #{content}, #{target_id}, SYSDATE)
+		#{writer}, #{content}, SYSDATE)
 	</select>
 	
 	<select id="getList" resultType="visitorDto">
-		SELECT num,writer,content,target_id,regdate
+		SELECT num,writer,content, regdate
 	    FROM visitor_comment
 		ORDER BY num DESC
 							
@@ -18,7 +19,7 @@
 	<select id="getData" parameterType="visitorDto" resultType="visitorDto">
 		SELECT result1.*
 		FROM 
-			(SELECT num,writer,content,target_id, 
+			(SELECT num,writer,content,    
 			TO_CHAR(regdate, 'YYYY.MM.DD DAY HH24:MI') AS regdate 
 			FROM visitor_comment
 			<where>
@@ -30,7 +31,7 @@
 		WHERE num=#{num}	
 	</select>
 	<select id="getDataform" parameterType="int" resultType="visitorDto">
-		SELECT num,writer,content,target_id, 
+		SELECT num,writer,content,    
 		TO_CHAR(regdate, 'YYYY.MM.DD DAY HH24:MI') AS regdate 
 		FROM visitor_comment 
 		WHERE num=#{num}	
