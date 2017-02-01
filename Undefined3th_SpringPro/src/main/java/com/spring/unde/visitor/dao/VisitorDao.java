@@ -11,8 +11,5 @@ public interface VisitorDao {
 	public VisitorDto getDataform(int num);
 	public void update(VisitorDto dto);
 	public void delete(int num);
-	public int getCount(VisitorDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int getCount();
 }
