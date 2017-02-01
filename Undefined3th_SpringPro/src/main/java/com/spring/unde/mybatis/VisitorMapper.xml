@@ -10,15 +10,21 @@
 	</select>
 	
 	<select id="getList" resultType="visitorDto" parameterType="visitorDto">
-		SELECT num,writer,content,regdate
-		FROM visitor_comment
-		<where>
-		 	<if test="writer != null">
-		  		OR writer LIKE '%'||#{writer}||'%'
-		  	</if>
-		</where>				  
-		ORDER BY num DESC
-							
+		SELECT num,writer,content, 
+		TO_CHAR(regdate, 'YYYY.MM.DD DAY HH24:MI') AS regdate 
+		FROM
+			(SELECT result1.*, ROWNUM rnum
+			FROM (SELECT num,writer,content,regdate
+				  FROM visitor_comment
+				<where>
+				 	<if test="writer != null">
+				  		OR writer LIKE '%'||#{writer}||'%'
+				  	</if>
+				</where>				  
+				  ORDER BY num DESC
+				  ) result1
+			)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}		
 	</select>	
 	
 	<select id="getData" parameterType="visitorDto" resultType="visitorDto">
