@@ -34,22 +34,16 @@ public class VisitorController {
 	   return new ModelAndView("redirect:/visitor/visitors.do");
 	}
 	
-	@RequestMapping("/visitor/detail")
-	public ModelAndView detail(@RequestParam int num){
-		ModelAndView mView =  visitorService.getData(num);
-		mView.setViewName("visitor/detail");
-		return mView;
-	}
 	
 	//글 삭제 요청 처리
-	@RequestMapping("/visitor/private/delete")
+	@RequestMapping("/visitor/delete")
 	public ModelAndView authDelete(@RequestParam int num){
 		visitorService.delete(num);
-		return new ModelAndView("redirect:/visitor/list.do");
+		return new ModelAndView("redirect:/visitor/visitors.do");
 	}
 	
 	//글 수정폼 요청 처리
-	@RequestMapping("/visitor/private/updateform")
+	@RequestMapping("/visitor/updateform")
 	public ModelAndView authUpdateform(@RequestParam int num){
 		//수정할 글의 정보가 담긴 ModelAndView 객체를 리턴받는다
 	ModelAndView mView= visitorService.updateForm(num);
@@ -59,9 +53,9 @@ public class VisitorController {
 			return mView;   
 	   }
 	
-	@RequestMapping("/visitor/private/update")
+	@RequestMapping("/visitor/update")
 	public ModelAndView authUpdate(@ModelAttribute VisitorDto dto){
 		visitorService.update(dto);
-		return new ModelAndView("redirect:/visitor/list.do");
+		return new ModelAndView("redirect:/visitor/visitors.do");
 	}
 }

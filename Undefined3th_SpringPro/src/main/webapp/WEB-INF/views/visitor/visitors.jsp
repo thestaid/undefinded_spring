@@ -101,11 +101,13 @@
 				</div>
 				<div class="commentBody" style="border-top:solid 1px gray;clear:both;margin-bottom:20px;">${tmp.content }</div>
 				<div class="commentFooter">
+					
 					<%-- 아이디가 admin이거나 글의 주인일 경우 삭제와 수정을 가능하게 하기위한 처리 --%>
-					<c:if test="${id eq 'admin' or id eq tmp.writer }">
+					<c:if test="${id eq 'admin' or id eq tmp.writer or 'gura' eq tmp.writer}">	<!-- 수정사항 : 임시계정 부여 -->
 						<a href="javascript:deleteConfirm${tmp.num }()" class="pull-right commentFooter_a" style="margin-left:5px">삭제</a>
 						<a href="javascript:updateform${tmp.num }()" class="pull-right commentFooter_a">수정</a><br/>					
 					</c:if>
+					
 					<div id="num${tmp.num }" style="width:100%;display:none;">
 						<form action="update.do?num=${tmp.num }&keyword=${keyword}" method="post" class="commentUpdateForm" id="visitorUpdateFrom${tmp.num }">
 							<input type="hidden" value="${tmp.num }" name="num" id="updateNum${tmp.num }"/>								
@@ -121,7 +123,28 @@
 					</div>
 				</div>
 			</div>	
-												
+			<script>
+				//업데이트 폼의 ajax 처리
+				function updateform${tmp.num }(){
+					var num=$("#updateNum${tmp.num }").val();
+					$("#num"+num).toggle();
+					$.ajax({
+						url:"updateform.do",
+						method:"get",
+						data:{"num":num},
+						success:function(data){
+							$("#content2${tmp.num }").text(data);
+						}			
+					});
+				};
+				//삭제시 여부를 묻는 함수
+				function deleteConfirm${tmp.num }(){
+					var isDelete=confirm("삭제하시겠습니까?");
+					if(isDelete){
+						location.href="${pageContext.request.contextPath }/visitor/delete.do?num=${tmp.num }";
+					}					
+				}
+			</script>										
 		</c:forEach>	
 	</div>
 	<!-- 페이지 디스플레이 출력 -->

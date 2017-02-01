@@ -30,18 +30,22 @@
 			ORDER BY num DESC) result1
 		WHERE num=#{num}	
 	</select>
+	
 	<select id="getDataform" parameterType="int" resultType="visitorDto">
 		SELECT num,writer,content,    
 		TO_CHAR(regdate, 'YYYY.MM.DD DAY HH24:MI') AS regdate 
 		FROM visitor_comment 
 		WHERE num=#{num}	
 	</select>
+	
 	<update id="update" parameterType="visitorDto">
 		UPDATE visitor_comment SET content=#{content} WHERE num=#{num}
 	</update>
+	
 	<delete id="delete" parameterType="int">
 		DELETE FROM visitor_comment WHERE num=#{num}
 	</delete>
+	
 	<select id="getCount" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM visitor_comment
