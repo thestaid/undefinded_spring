@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.spring.unde.board.dto.BoardDto" alias="boardDto"/>
 		<typeAlias type="com.spring.unde.users.dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.spring.unde.visitor.dto.VisitorDto" alias="visitorDto"/>
+		<typeAlias type="com.spring.unde.photo.dto.PhotoDto" alias="photoDto"/>
 	</typeAliases>
 
 	<!-- 환경 설정 -->
@@ -28,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/spring/unde/mybatis/BoardMapper.xml"/>
 		<mapper resource="com/spring/unde/mybatis/UsersMapper.xml"/>
 		<mapper resource="com/spring/unde/mybatis/VisitorMapper.xml"/>
+		<mapper resource="com/spring/unde/mybatis/PhotoMapper.xml"/>
 	</mappers>
 </configuration>
 
