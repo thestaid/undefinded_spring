@@ -38,12 +38,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardDto getData(int num) {
+	public BoardDto getData(BoardDto dto) {
 		//정보 얻어오기
-		BoardDto dto = boardDao.getData(num);
+		BoardDto resultDto = boardDao.getData(dto);
 		//조회수 1증가
-		boardDao.increaseViewCount(num);
-		return dto;
+		boardDao.increaseViewCount(dto.getNum());
+		return resultDto;
 	}
 
 	@Override
@@ -105,10 +105,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public ModelAndView updateForm(int num) {
 		//수정할 글정보를 얻어온다. 
-		BoardDto dto = boardDao.getData(num);
+		BoardDto dto=new BoardDto();
+		dto.setNum(num);
+		BoardDto resultDto = boardDao.getData(dto);
 		//수정할 글정보를 ModelAndView 객체에 담고 
 		ModelAndView mView=new ModelAndView();
-		mView.addObject("dto", dto);
+		mView.addObject("dto", resultDto);
 		return mView;
 	}
 

@@ -71,11 +71,14 @@ public class BoardController {
 	@RequestMapping("/board/detail")
 	public ModelAndView detail(HttpServletRequest request, 
 			@RequestParam(defaultValue="1") int pageNum, 
-			@RequestParam int num){
+			@ModelAttribute BoardDto dto, @RequestParam int num
+			,@RequestParam String condition, @RequestParam String keyword){
 		ModelAndView mView=boardCommentService.getList(request, pageNum, num);
 		System.out.println("pageNum : "+pageNum);
-		BoardDto dto = boardService.getData(num);
-		mView.addObject("dto", dto);
+		BoardDto resultDto = boardService.getData(dto);
+		mView.addObject("dto", resultDto);
+		mView.addObject("condition", condition);
+		mView.addObject("keyword", keyword);
 		mView.setViewName("board/detail");
 		return mView;
 	}

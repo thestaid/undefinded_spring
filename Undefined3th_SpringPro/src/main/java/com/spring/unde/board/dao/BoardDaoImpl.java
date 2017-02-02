@@ -36,9 +36,9 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public BoardDto getData(int num) {
-		BoardDto dto = session.selectOne("board.getData", num);
-		return dto;
+	public BoardDto getData(BoardDto dto) {
+		BoardDto resultDto = session.selectOne("board.getData", dto);
+		return resultDto;
 	}
 
 	@Override
