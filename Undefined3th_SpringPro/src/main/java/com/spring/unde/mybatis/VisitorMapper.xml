@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="visitor">
+
+	<select id="insert" parameterType="visitorDto">
+		INSERT INTO visitor_comment 
+		(num, writer,content, regdate) 
+		VALUES (visitor_seq.NEXTVAL, 
+		#{writer}, #{content}, SYSDATE)
+	</select>
+	
+	<select id="getList" resultType="visitorDto" parameterType="visitorDto">
+		SELECT num,writer,content, 
+		TO_CHAR(regdate, 'YYYY.MM.DD DAY HH24:MI') AS regdate 
+		FROM
+			(SELECT result1.*, ROWNUM rnum
+			FROM (SELECT num,writer,content,regdate
+				  FROM visitor_comment
+				<where>
+				 	<if test="writer != null">
+				  		OR writer LIKE '%'||#{writer}||'%'
+				  	</if>
+				</where>				  
+				  ORDER BY num DESC
+				  ) result1
+			)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}		
+	</select>	
+	
+	<select id="getData" parameterType="visitorDto" resultType="visitorDto">
+		SELECT result1.*
+		FROM 
+			(SELECT num,writer,content,    
+			TO_CHAR(regdate, 'YYYY.MM.DD DAY HH24:MI') AS regdate 
+			FROM visitor_comment
+			<where>
+			 	<if test="writer != null">
+			  		OR writer LIKE '%'||#{writer}||'%'
+			  	</if>
+			</where>			
+			ORDER BY num DESC) result1
+		WHERE num=#{num}	
+	</select>
+	
+	<select id="getDataform" parameterType="int" resultType="visitorDto">
+		SELECT num,writer,content,    
+		TO_CHAR(regdate, 'YYYY.MM.DD DAY HH24:MI') AS regdate 
+		FROM visitor_comment 
+		WHERE num=#{num}	
+	</select>
+	
+	<update id="update" parameterType="visitorDto">
+		UPDATE visitor_comment SET content=#{content} WHERE num=#{num}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM visitor_comment WHERE num=#{num}
+	</delete>
+	
+	<select id="getCount" resultType="int" parameterType="visitorDto">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM visitor_comment
+		<where>
+		 	<if test="writer != null">
+		  		OR writer LIKE '%'||#{writer}||'%'
+		  	</if>
+		</where>		
+	</select>	
+</mapper>
