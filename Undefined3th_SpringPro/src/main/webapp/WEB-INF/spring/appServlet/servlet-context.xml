@@ -55,6 +55,7 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	<context:annotation-config />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -68,6 +69,7 @@
 	<context:component-scan base-package="com.spring.unde" />
 	<context:component-scan base-package="com.spring.unde.board.*" />
 	<context:component-scan base-package="com.spring.unde.users.*" />
+	<context:component-scan base-package="com.spring.unde.visitor.*" />
 	
    <!-- Spring Transaction Manager 설정 -->
    <!-- 아래의 내용은 txManager = new DataSourceTransactionManager -->

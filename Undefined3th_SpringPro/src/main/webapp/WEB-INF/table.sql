@@ -1,4 +1,5 @@
 
+
 //게시판 SQL문
 CREATE TABLE member_board(
 num NUMBER PRIMARY KEY,
@@ -21,3 +22,13 @@ aw VARCHAR2(1000) NOT NULL
 );
 
 CREATE SEQUENCE unde_users_seq NOCACHE;
+-- 방명록 SQL문
+
+CREATE SEQUENCE visitor_seq NOCACHE;
+
+CREATE TABLE visitor_comment(
+num NUMBER PRIMARY KEY,--덧글의 글번호
+writer VARCHAR2(100),
+content CLOB,
+regdate DATE
+);
