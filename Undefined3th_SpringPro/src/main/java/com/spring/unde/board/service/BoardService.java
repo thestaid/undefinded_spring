@@ -9,7 +9,7 @@ import com.spring.unde.board.dto.BoardDto;
 public interface BoardService {
 	public ModelAndView getList(HttpServletRequest request, int pageNum);
 	public void insert(BoardDto dto);
-	public ModelAndView getData(int num);
+	public BoardDto getData(int num);
 	public void update(BoardDto dto);
 	public void delete(int num);
 	public ModelAndView updateForm(int num);

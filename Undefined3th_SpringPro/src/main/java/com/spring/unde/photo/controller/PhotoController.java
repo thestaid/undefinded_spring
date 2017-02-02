@@ -34,7 +34,7 @@ public class PhotoController {
 	}
 	
 	@RequestMapping("/photo/private/upload")
-	public ModelAndView authupload(HttpServletRequest request, @ModelAttribute PhotoDto dto){
+	public ModelAndView authUpload(HttpServletRequest request, @ModelAttribute PhotoDto dto){
 		ModelAndView mView = new ModelAndView();
 		photoService.upload(request, dto);
 		mView.addObject("alertMess", "새 사진이 이 추가되었습니다.");
@@ -58,7 +58,7 @@ public class PhotoController {
 	}
 	
 	@RequestMapping("/photo/private/delete")
-	public ModelAndView authdelete(HttpServletRequest request ,@RequestParam int num){
+	public ModelAndView authDelete(HttpServletRequest request ,@RequestParam int num){
 		photoService.delete(num);
 		String id = (String)request.getSession().getAttribute("id");
 		ModelAndView mView = new ModelAndView();

@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.unde.board.dao.BoardDao;
-import com.spring.unde.board.dto.BoardDto;
+import com.spring.unde.board.dao.BoardCommentDao;
+import com.spring.unde.board.dto.BoardCommentDto;
 
 @Component
-public class BoardServiceImpl implements BoardService {
+public class BoardCommentServiceImpl implements BoardCommentService {
 
 	// 한 페이지에 나타낼 로우의 갯수
 	private static final int PAGE_ROW_COUNT = 5;
@@ -20,59 +20,45 @@ public class BoardServiceImpl implements BoardService {
 	private static final int PAGE_DISPLAY_COUNT = 5;
 
 	@Autowired
-	private BoardDao boardDao;
+	private BoardCommentDao boardCommentDao;
 
 	@Override
-	public void insert(BoardDto dto) {
-		boardDao.insert(dto);
+	public void insert(BoardCommentDto dto) {
+		boardCommentDao.insert(dto);
 	}
 
 	@Override
-	public void update(BoardDto dto) {
-		boardDao.update(dto);
+	public int getSequence() {
+		int seq = boardCommentDao.getSequence();
+		return seq;
+	}
+
+	@Override
+	public ModelAndView getData(int num) {
+		BoardCommentDto dto = boardCommentDao.getData(num);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("dto", dto);
+		return mView;
+	}
+
+	@Override
+	public void update(BoardCommentDto dto) {
+		boardCommentDao.update(dto);
 	}
 
 	@Override
 	public void delete(int num) {
-		boardDao.delete(num);
+		boardCommentDao.delete(num);
 	}
 
 	@Override
-	public BoardDto getData(int num) {
-		//정보 얻어오기
-		BoardDto dto = boardDao.getData(num);
-		//조회수 1증가
-		boardDao.increaseViewCount(num);
-		return dto;
-	}
-
-	@Override
-	public ModelAndView getList(HttpServletRequest request, int pageNum) {
-		// 검색과 관련된 파라미터를 읽어와 본다.
-		String keyword = request.getParameter("keyword");
-		String condition = request.getParameter("condition");
-
-		// BoardDto 객체를 생성해서
-		BoardDto dto = new BoardDto();
-		if (keyword != null) { // 검색어가 전달된 경우
-			if (condition.equals("titlecontent")) { // 제목+내용 검색
-				dto.setTitle(keyword);
-				dto.setContent(keyword);
-			} else if (condition.equals("title")) {// 제목 검색
-				dto.setTitle(keyword);
-			} else if (condition.equals("writer")) {// 작성자 검색
-				dto.setWriter(keyword);
-			}
-			// list.jsp 뷰페이지에서 필요한 내용을 request 에 담는다.
-			request.setAttribute("condition", condition);
-			request.setAttribute("keyword", keyword);
-		}
+	public ModelAndView getList(HttpServletRequest request, int pageNum, int num) {
 		// 보여줄 페이지 데이터의 시작 ResultSet row 번호
 		int startRowNum = 1 + (pageNum - 1) * PAGE_ROW_COUNT;
 		// 보여줄 페이지 데이터의 끝 ResultSet row 번호
 		int endRowNum = pageNum * PAGE_ROW_COUNT;
 		// 전체 row 의 갯수를 DB 에서 얻어온다.
-		int totalRow = boardDao.getCount();
+		int totalRow = boardCommentDao.getCount(num);
 		// 전체 페이지의 갯수 구하기
 		int totalPageCount = (int) Math.ceil(totalRow / (double) PAGE_ROW_COUNT);
 		// 시작 페이지 번호
@@ -85,30 +71,23 @@ public class BoardServiceImpl implements BoardService {
 		}
 
 		// 시작 row 번호와 끝 row 번호를 BoardDto 에 담는다.
+		BoardCommentDto dto = new BoardCommentDto();
+		dto.setNum(num);
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
 
 		// Dao 객체를 이용해서 글목록을 얻어온다.
-		List<BoardDto> list = boardDao.getList(dto);
+		List<BoardCommentDto> list = boardCommentDao.getList(dto);
 		// ModelAndView 객체를 생성해서 글목록을 담는다.
 		ModelAndView mView = new ModelAndView();
 		mView.addObject("list", list);
+		request.setAttribute("list", list);
 		mView.addObject("pageNum", pageNum);
 		mView.addObject("startPageNum", startPageNum);
 		mView.addObject("endPageNum", endPageNum);
 		mView.addObject("totalPageCount", totalPageCount);
 
 		// 리턴해주기
-		return mView;
-	}
-
-	@Override
-	public ModelAndView updateForm(int num) {
-		//수정할 글정보를 얻어온다. 
-		BoardDto dto = boardDao.getData(num);
-		//수정할 글정보를 ModelAndView 객체에 담고 
-		ModelAndView mView=new ModelAndView();
-		mView.addObject("dto", dto);
 		return mView;
 	}
 
