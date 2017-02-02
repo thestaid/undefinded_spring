@@ -7,11 +7,16 @@
 <meta charset="UTF-8" />
 <title>archive/uploadform.jsp</title>
 <jsp:include page="../../ui/myResource.jsp" />
+<style>
+.photoUploadForm{
+	width: 30%;
+	margin-top:200px;
+	margin-left: 20%;
+}
+</style>
 </head>
 <body>
-	<jsp:include page="../../ui/navbar.jsp">
-		<jsp:param value="photo" name="active" />
-	</jsp:include>
+	<jsp:include page="../../ui/navbar.jsp"></jsp:include>
 	<!-- 
 	- 업로드 폼 작성법
 	1. method="post"
@@ -19,8 +24,8 @@
 	3. <input type="file"/>
  -->
 	<div class="mainContent">
-		<div class="container">
-			<h3 class="text-center" style="margin: 50px">사진 업로드</h3>
+		<div class="photoUploadForm">
+			<h3><strong>사진 업로드</strong></h3>
 			<form action="upload.do" method="post" class="form-horizontal"
 				enctype="multipart/form-data">
 				<div class="form-group">
@@ -35,7 +40,7 @@
 					<button class="btn btn-primary pull-right" type="submit"
 						id="fileUploadBtn">확인</button>
 				</div>
-			</form>
+			</form>		
 		</div>
 	</div>
 	<script>

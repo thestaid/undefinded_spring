@@ -12,7 +12,8 @@
 </head>
 <style>
 	.updateForm{
-		margin:100px 20px 100px 20px;
+		margin:200px 20px 100px 20px;
+		width:60%;
 	}
 	.btn-block{
 		margin-top:5px;
@@ -23,9 +24,9 @@
 	<jsp:param value="board" name="active"/>
 </jsp:include>
 <div class="mainContent">
-	<div class="container">
-		<form action="update.do" method="post" class="updateForm">
-		<h3>게시글 수정</h3>
+	<div class="updateForm">
+		<form action="update.do" method="post">
+		<h3><strong>게시글 수정</strong></h3>
 			<input type="hidden" name="num" value="${dto.num }"/>
 			<table class="table" style="margin:0px;">
 				<tr>
@@ -50,9 +51,9 @@
 		      <input type="button" onclick="submitContents(this);" value="수정" class="btn btn-warning pull-right"/>
 		      <a href="${pageContext.request.contextPath }/board/list.do" class="btn btn-info pull-right" style="margin-right:5px;">목록</a>
 		   </div>
-		</form>	
+		</form>		
 	</div>
-	</div>
+</div>
 	<script>
 		var oEditors = [];
 		

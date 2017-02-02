@@ -13,7 +13,7 @@
 	}
 	.btn-block{
 		margin-top:5px;
-	}
+	}		
 </style>
 <jsp:include page="../ui/myResource.jsp"></jsp:include>
 </head>
@@ -22,7 +22,7 @@
 	<div class="mainContent">
 	<%--회원가입하면 원래 요청한 페이지의 uri값을 파라미터로 들고간다. --%>
 		<form action="pwdSearch.do?uri=${uri }" method="post" class="pwdSearchForm">
-			<h3><strong style="color: blue">비밀번호 찾기</strong></h3>
+			<h3><strong>비밀번호 찾기</strong></h3>
 			<div class="form-group">
 				<label class="control-label" for="id">아이디</label>
 				<input class="form-control" type="text" 

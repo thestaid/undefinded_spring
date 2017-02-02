@@ -24,14 +24,9 @@
 	color: red;
 	text-decoration: underline;
 }
-
-.container {
-	margin: auto;
-	width: 80%;
-}
-
-.boardListForm {
-	margin: 100px 20px 100px 20px;
+.photoListForm{
+	margin:200px 20px 100px 20px;
+	width:60%;
 }
 
 h3 {
@@ -48,52 +43,48 @@ h3 {
 		<jsp:param value="photo" name="active" />
 	</jsp:include>
 	<div class="mainContent">
-		<div class="container">
-			<div class="boardListForm" style="margin-top: 100px;">
-				<table class="table table-hover col-xs-8">
-					<thead>
+		<div class="photoListForm">
+			<h3><strong>사진첩</strong></h3>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th class="division"></th>
+						<th class="division">제목</th>
+						<th class="division">작성자</th>
+						<th class="division">미리보기</th>
+						<th class="division">파일명</th>
+						<th class="division">크기</th>
+						<th class="division">등록일</th>
+						<th class="division">삭제</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="tmp" items="${list}">
 						<tr>
-							<th class="division"></th>
-							<th class="division">제목</th>
-							<th class="division">작성자</th>
-							<th class="division">미리보기</th>
-							<th class="division">파일명</th>
-							<th class="division">크기</th>
-							<th class="division">등록일</th>
-							<th class="division">삭제</th>
+							<td class="division">${tmp.getNum()}</td>
+							<td class="division">${tmp.getTitle()}</td>
+							<td class="division">${tmp.getWriter()}</td>
+							<td class="division"><img
+								src="${pageContext.request.contextPath }/upload/${tmp.saveFileName }"
+								style="width: 150px; height: 100px;" /></td>
+							<td class="division"><a
+								href="download.do?num=${tmp.getNum()}">${tmp.getOrgFileName()}</a></td>
+							<td class="division">${tmp.getFileSize()}</td>
+							<td class="division">${tmp.getRegdate()}</td>
+							<td class="division"><c:choose>
+									<c:when test="${id eq 'admin' or id eq tmp.getWriter()}">
+										<a href="javascript:deleteCheck(${tmp.getNum() })"><span
+											class="glyphicon glyphicon-trash" style="font-size: 20px;">
+											</span></a>
+									</c:when>
+									<c:otherwise></c:otherwise>
+								</c:choose></td>
 						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="tmp" items="${list}">
-							<tr>
-								<td class="division">${tmp.getNum()}</td>
-								<td class="division">${tmp.getTitle()}</td>
-								<td class="division">${tmp.getWriter()}</td>
-								<td class="division"><img
-									src="${pageContext.request.contextPath }/upload/${tmp.saveFileName }"
-									style="width: 150px; height: 100px;" /></td>
-								<td class="division"><a
-									href="download.do?num=${tmp.getNum()}">${tmp.getOrgFileName()}</a></td>
-								<td class="division">${tmp.getFileSize()}</td>
-								<td class="division">${tmp.getRegdate()}</td>
-								<td class="division"><c:choose>
-										<c:when test="${id eq 'admin' or id eq tmp.getWriter()}">
-											<a href="javascript:deleteCheck(${tmp.getNum() })"><span
-												class="glyphicon glyphicon-trash" style="font-size: 20px;">
-												</span></a>
-										</c:when>
-										<c:otherwise></c:otherwise>
-									</c:choose></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
+					</c:forEach>
+				</tbody>
+			</table>
 			<a
-				href="<c:choose>
-         <c:when test="${empty id }">javascript:photoLoginCheck()</c:when>
-         <c:otherwise>private/uploadform.do</c:otherwise>
-   </c:choose>"
+				href="private/uploadform.do"
 				class="btn btn-success"
 				style="float: right; padding: 4px; font-weight: bold;"> <span
 				class="glyphicon glyphicon-open"></span> 업로드
@@ -156,7 +147,7 @@ h3 {
 					style="padding: 4px; color: white;">
 					<span class="glyphicon glyphicon-search" style="font-size: 13px;"></span>
 				</button>
-			</form>
+			</form>			
 		</div>
 	</div>
 	<script>

@@ -30,22 +30,9 @@
 	font-weight: bold;
 	width: 80px;
 }
-
-.container {
-	margin: auto;
-	width: 80%;
-}
-
 .boardListForm {
-	margin: 100px 20px 100px 20px;
-}
-
-h3 {
-	font-weight: bolder;
-	margin-top: 50px;
-	margin-bottom: 30px;
-	padding-bottom: 10px;
-	border-bottom: 2px solid gray;
+	margin:200px 20px 100px 20px;
+	width:60%;
 }
 </style>
 </head>
@@ -54,39 +41,35 @@ h3 {
 		<jsp:param value="board" name="active" />
 	</jsp:include>
 	<div class="mainContent">
-		<div class="container">
-			<div class="boardListForm">
-				<table class="table table-hover col-xs-8">
-					<thead>
+		<div class="boardListForm">
+			<h3><strong>게시판</strong></h3>
+			<table class="table table-hover col-xs-8">
+				<thead>
+					<tr>
+						<th class="division"></th>
+						<th class="division">제목</th>
+						<th class="division">작성자</th>
+						<th class="division">등록일</th>
+						<th class="division">조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="tmp" items="${list }">
 						<tr>
-							<th class="division"></th>
-							<th class="division">제목</th>
-							<th class="division">작성자</th>
-							<th class="division">등록일</th>
-							<th class="division">조회수</th>
+							<td class="division">${tmp.num }</td>
+							<td class="division"><a
+								href="detail.do?num=${tmp.num}&condition=${condition}&keyword=${keyword}">${tmp.title }</a>
+							</td>
+							<td class="division">${tmp.writer }</td>
+							<td class="division">${tmp.regdate }</td>
+							<td class="division">${tmp.viewCount }</td>
 						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="tmp" items="${list }">
-							<tr>
-								<td class="division">${tmp.num }</td>
-								<td class="division"><a
-									href="detail.do?num=${tmp.num}&condition=${condition}&keyword=${keyword}">${tmp.title }</a>
-								</td>
-								<td class="division">${tmp.writer }</td>
-								<td class="division">${tmp.regdate }</td>
-								<td class="division">${tmp.viewCount }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
+					</c:forEach>
+				</tbody>
+			</table>
 			<%-- 로그인 여부에 따라 글쓰기의 처리가 다름 --%>
 			<a
-				href="<c:choose>
-				<c:when test="${empty id }">javascript:boardInsertBtn()</c:when>
-				<c:otherwise>private/insertform.do</c:otherwise>
-			</c:choose>"
+				href="private/insertform.do"
 				id="boardInsertBtn" class="btn btn-success"> <span
 				class="glyphicon glyphicon-pencil" style="color: white;"></span> 글쓰기
 			</a>
@@ -146,14 +129,8 @@ h3 {
 				<button type="submit" class="btn btn-info" style="padding: 4px;">
 					<span class="glyphicon glyphicon-search" style="font-size: 13px;"></span>
 				</button>
-			</form>
+			</form>			
 		</div>
 	</div>
-	<script>
-		//로그인이 안되어있을경우 경고창 띄운다.
-		function boardInsertBtn() {
-			alert("로그인 해주세요!");
-		};
-	</script>
 </body>
 </html>

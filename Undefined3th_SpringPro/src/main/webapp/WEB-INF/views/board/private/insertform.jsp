@@ -8,14 +8,20 @@
 <title>글쓰기 페이지 입니다.</title>
 <!-- SmartEditor 관련 javascript 로딩 -->
 <jsp:include page="../../ui/myResource.jsp"></jsp:include>
+<style>
+.boardInsertForm{
+	margin:200px 20px 100px 20px;
+	width:60%;
+}
+</style>
 <script src="<c:url value='/SmartEditor/js/HuskyEZCreator.js' />" ></script>
 </head>
 <body>
 	<jsp:include page="../../ui/navbar.jsp"></jsp:include>
 	<div class="mainContent">
-		<div class="container">
-			<h3 class="text-center" style="margin: 50px">글쓰기</h3>
+		<div class="boardInsertForm">
 			<form action="insert.do" method="post" class="form-horizontal">
+				<h3><strong>글쓰기</strong></h3>
 				<div class="form-group">
 				<input type="hidden" name="writer" value="${id }" />
 					<label class="control-label" for="writer">작성자</label> <input
@@ -31,7 +37,7 @@
 						<a href="../list.do" class="btn btn-info" style="float: right">목록</a>
 					</div>
 				</div>
-			</form>
+			</form>	
 		</div>
 	</div>
 

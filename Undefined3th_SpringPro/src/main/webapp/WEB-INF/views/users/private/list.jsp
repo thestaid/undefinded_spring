@@ -22,9 +22,8 @@
 		text-decoration: underline;
 	}
 	.adminListForm{
-		width: 30%;
-		margin-top:200px;
-		margin-left: 20%;
+		margin:200px 20px 100px 20px;
+		width:60%;
 	}	
 </style>
 <meta charset=UTF-8">
@@ -34,6 +33,7 @@
 <jsp:include page="../../ui/navbar.jsp"></jsp:include>
 	<div class="mainContent">
 		<div class="adminListForm">
+			<h3><strong>회원관리 페이지</strong></h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>

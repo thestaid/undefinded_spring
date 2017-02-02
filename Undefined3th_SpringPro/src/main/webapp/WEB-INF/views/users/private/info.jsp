@@ -22,7 +22,7 @@
 <jsp:include page="../../ui/navbar.jsp"></jsp:include>
 	<div class="mainContent">
 		<div class="infoForm">
-			<h3 style="margin-bottom:30px; color: green;">회원 정보 페이지</h3>
+			<h3 style="margin-bottom:30px;"><strong>회원 정보 페이지</strong></h3>
 			<table class="table table-bordered">
 				<thead>
 					<tr>

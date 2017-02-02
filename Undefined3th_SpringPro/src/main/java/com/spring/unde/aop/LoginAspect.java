@@ -17,7 +17,9 @@ public class LoginAspect {
 	
 	//"execution(* auth*(..))" : auth로 시작하는 모든 메소드
 	//"execution(* com.spring.unde.users.controller.UsersController.auth*(..))" : 위의 내용 세분화
-	@Around("execution(* com.spring.unde.users.controller.UsersController.auth*(..)) ")
+	@Around("execution(* com.spring.unde.users.controller.UsersController.auth*(..)) "
+			+ "|| execution(* com.spring.unde.board.controller.BoardController.auth*(..)) "
+			+ "|| execution(* com.spring.unde.photo.controller.PhotoController.auth*(..)) ")
 	public Object loginCheck(ProceedingJoinPoint joinPoint)
 		throws Throwable{
 		//컨트롤러에 aop를 적용 했을때 HttpServletRequest 참조값 얻어오기

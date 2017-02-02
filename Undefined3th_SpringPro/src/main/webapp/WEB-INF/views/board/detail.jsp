@@ -16,15 +16,10 @@
 	width: 80px;
 }
 
-.boardListForm {
-	margin: 100px 20px 100px 20px;
+.boardDetailForm {
+	margin:200px 20px 100px 20px;
+	width:60%;
 }
-
-.container {
-	margin-top: 100px;
-	width: 75%;
-}
-
 .comment textarea {
 	width: 70%;
 	background-color: #fff;
@@ -63,59 +58,57 @@ li a.muted {
 	<jsp:include page="../ui/navbar.jsp"/>
 	<!-- 로그인 한 회원이 작성한 글이라면 수정 링크를 제공해준다. -->
 	<div class="mainContent">
-	<div class="container">
-		<c:if test="${dto.prevNum ne 0 }">
-			<a
-				href="detail.do?num=${dto.prevNum }&condition=${condition}&keyword=${keyword}"
-				class="btn btn-default pull-left move-btn"
-				style="margin-right: 10px; font-size: 12px; padding: 5px;"> <span
-				class="glyphicon glyphicon-chevron-up" style="color: red;"></span>이전글
-			</a>
-		</c:if>
-		<c:if test="${dto.nextNum ne 0}">
-			<a
-				href="detail.do?num=${dto.nextNum }&condition=${condition}&keyword=${keyword}"
-				class="btn btn-default pull-left move-btn"
-				style="font-size: 12px; padding: 5px;"> 다음글<span
-				class="glyphicon glyphicon-chevron-down" style="color: red;"></span>
-			</a>
-		</c:if>
-		<a href="list.do?condition=${condition}&keyword=${keyword}"
-			class="pull-right btn btn-default move-btn"
-			style="font-size: 12px; padding: 5px;">목록</a>
-		<table class="table table-bordered" style="margin-top: 40px;">
-			<tr>
-				<td>
-					<div class="row">
-						<div class="col-xs-4" style="font-weight: bold;">${dto.title }</div>
-						<div class="col-xs-4"></div>
-						<div class="col-xs-4 pull-right" style="font-size: 12px;">${dto.regdate }</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="row">
-						<div class="col-xs-4">글번호 : ${dto.num }</div>
-						<div class="col-xs-4"></div>
-						<div class="col-xs-4 pull-right">작성자 : ${dto.writer }</div>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td><div class="content" style="margin-top: 40px;">${dto.content }</div></td>
-			</tr>
-		</table>
-		<c:if test="${id eq dto.writer }">
-			<a href="javascript:deleteCheck()" class="btn btn-danger pull-right"
-				style="margin-left: 10px">삭제</a>
-			<a href="private/updateform.do?num=${dto.num }"
-				class="btn btn-warning pull-right">수정</a>
-		</c:if>
+		<div class="boardDetailForm">
+			<c:if test="${dto.prevNum ne 0 }">
+				<a
+					href="detail.do?num=${dto.prevNum }&condition=${condition}&keyword=${keyword}"
+					class="btn btn-default pull-left move-btn"
+					style="margin-right: 10px; font-size: 12px; padding: 5px;"> <span
+					class="glyphicon glyphicon-chevron-up" style="color: red;"></span>이전글
+				</a>
+			</c:if>
+			<c:if test="${dto.nextNum ne 0}">
+				<a
+					href="detail.do?num=${dto.nextNum }&condition=${condition}&keyword=${keyword}"
+					class="btn btn-default pull-left move-btn"
+					style="font-size: 12px; padding: 5px;"> 다음글<span
+					class="glyphicon glyphicon-chevron-down" style="color: red;"></span>
+				</a>
+			</c:if>
+			<a href="list.do?condition=${condition}&keyword=${keyword}"
+				class="pull-right btn btn-default move-btn"
+				style="font-size: 12px; padding: 5px;">목록</a>
+			<table class="table table-bordered" style="margin-top: 40px;">
+				<tr>
+					<td>
+						<div class="row">
+							<div class="col-xs-4" style="font-weight: bold;">${dto.title }</div>
+							<div class="col-xs-4"></div>
+							<div class="col-xs-4 pull-right" style="font-size: 12px;">${dto.regdate }</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="row">
+							<div class="col-xs-4">글번호 : ${dto.num }</div>
+							<div class="col-xs-4"></div>
+							<div class="col-xs-4 pull-right">작성자 : ${dto.writer }</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><div class="content" style="margin-top: 40px;">${dto.content }</div></td>
+				</tr>
+			</table>
+			<c:if test="${id eq dto.writer }">
+				<a href="javascript:deleteCheck()" class="btn btn-danger pull-right"
+					style="margin-left: 10px">삭제</a>
+				<a href="private/updateform.do?num=${dto.num }"
+					class="btn btn-warning pull-right">수정</a>
+			</c:if>		
 		</div>
-		</div>
-
-		
+	</div>		
 	<script
 		src="${pageContext.request.contextPath }/resource/js/jquery-3.1.1.js"></script>
 	<script>

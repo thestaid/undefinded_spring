@@ -28,12 +28,14 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board/private/insertform")
-	public String insertform(){
-		return "board/private/insertform";
+	public ModelAndView authinsertform(){
+		ModelAndView mview=new ModelAndView();
+		mview.setViewName("board/private/insertform");
+		return mview;
 	}
 	
 	@RequestMapping("/board/private/insert")
-	public ModelAndView insert(HttpServletRequest request, @ModelAttribute BoardDto dto){
+	public ModelAndView authinsert(HttpServletRequest request, @ModelAttribute BoardDto dto){
 		ModelAndView mView = new ModelAndView();
 		boardService.insert(dto);
 		mView.addObject("alertMess", "새 글이 추가되었습니다.");
@@ -51,14 +53,14 @@ public class BoardController {
 	
 
 	@RequestMapping("/board/private/updateform")
-	public ModelAndView updateform(@RequestParam int num){
+	public ModelAndView authupdateform(@RequestParam int num){
 		ModelAndView mView=boardService.updateForm(num);
 		mView.setViewName("board/private/updateform");
 		return mView;
 	}
 	
 	@RequestMapping("/board/private/update")
-	public ModelAndView update(HttpServletRequest request ,@ModelAttribute BoardDto dto){
+	public ModelAndView authupdate(HttpServletRequest request ,@ModelAttribute BoardDto dto){
 		boardService.update(dto);
 		ModelAndView mView = new ModelAndView();
 		mView.addObject("alertMess", "글이 수정되었습니다.");
@@ -68,7 +70,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board/private/delete")
-	public ModelAndView delete(HttpServletRequest request ,@RequestParam int num){
+	public ModelAndView authdelete(HttpServletRequest request ,@RequestParam int num){
 		boardService.delete(num);
 		String id = (String)request.getSession().getAttribute("id");
 		ModelAndView mView = new ModelAndView();

@@ -23,7 +23,7 @@
 	<div class="mainContent">
 	<%--파라미터 uri값을 넘겨줘서 요청했던 페이지로 넘어가기 --%>
 		<form action="signin.do?uri=${param.uri }" method="post" class="loginForm">
-			<h3><strong style="color: red">로그인</strong></h3>
+			<h3><strong>로그인</strong></h3>
 			<div class="form-group">
 				<label for="id">아이디</label>
 				<input type="text" class="form-control" name="id" id="id"/>

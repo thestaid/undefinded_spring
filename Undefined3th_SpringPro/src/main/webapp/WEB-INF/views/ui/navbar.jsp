@@ -11,7 +11,7 @@ body * {
   transition: all 300ms ease-out;
 }
 body.light {
-  background-color: #EEE;
+  background-color: white;
 }
 body.dark {
   background-color: #222;
@@ -31,9 +31,10 @@ body ul.menu li {
   font-family: 'Raleway', sans-serif;
   font-size: 50px;
   text-transform: lowercase;
+  margin-top: 5px;
 }
 body ul.menu a:hover {
-  color: #EEE !important;
+  color: white !important;
   cursor: pointer;
 }
 .signinfo{font-size: 30px;}
@@ -44,8 +45,15 @@ body ul.menu a:hover {
 	display: table;
 	width: 100% ;
 	height: 100%;
-	background-color: #EEE;
+	background-color: white;
 }
+h3{
+	font-weight:bolder;		
+	margin-top:50px; 
+	margin-bottom:30px;
+	padding-bottom:10px;
+	border-bottom: 2px solid gray; 
+}	
 </style>
 <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
 <ul class="menu">
@@ -58,7 +66,7 @@ body ul.menu a:hover {
     	<c:if test="${id ne 'admin'}">style="display:none;"</c:if> 
     		id="navbarAdmin" 
     	<c:if test="${param.active eq 'admin' }">class="active"</c:if>>
-    	<a href="${pageContext.request.contextPath }/admin/list.do">관리페이지</a>
+    	<a href="${pageContext.request.contextPath }/admin/list.do" style="font-size: 30px;">관리페이지</a>
     </li>
     <c:choose>
     	<c:when test="${empty id }">
