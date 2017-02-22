@@ -22,7 +22,7 @@
 		text-decoration: underline;
 	}
 	.adminListForm{
-		margin:200px 20px 100px 20px;
+		margin:200px 20px 100px 50px;
 		width:60%;
 	}	
 </style>

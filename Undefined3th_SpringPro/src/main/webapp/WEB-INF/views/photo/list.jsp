@@ -25,7 +25,7 @@
 	text-decoration: underline;
 }
 .photoListForm{
-	margin:200px 20px 100px 20px;
+	margin:200px 20px 100px 50px;
 	width:60%;
 }
 
@@ -68,7 +68,7 @@ h3 {
 								src="${pageContext.request.contextPath }/upload/${tmp.saveFileName }"
 								style="width: 150px; height: 100px;" /></td>
 							<td class="division"><a
-								href="download.do?num=${tmp.getNum()}">${tmp.getOrgFileName()}</a></td>
+								href="download.do?num=${tmp.getNum()}"><span class="glyphicon glyphicon-download-alt"></span></a></td>
 							<td class="division">${tmp.getFileSize()}</td>
 							<td class="division">${tmp.getRegdate()}</td>
 							<td class="division"><c:choose>

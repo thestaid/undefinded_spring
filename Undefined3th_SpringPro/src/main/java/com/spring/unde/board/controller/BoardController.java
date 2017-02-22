@@ -27,7 +27,8 @@ public class BoardController {
 	private BoardCommentService boardCommentService;
 	
 	@RequestMapping("/board/private/commentInsert")
-	public ModelAndView authCommentInsert(@ModelAttribute BoardCommentDto dto){
+	public ModelAndView authCommentInsert(@ModelAttribute BoardCommentDto dto,@RequestParam(defaultValue="1") int pageNum, 
+			@RequestParam String condition, @RequestParam String keyword){
 		int seq=boardCommentService.getSequence();
 		dto.setNum(seq);
 		if(dto.getComment_group()==0){//원글에 대한 덧글인 경우
@@ -39,7 +40,7 @@ public class BoardController {
 		}
 		ModelAndView mview=new ModelAndView();
 		boardCommentService.insert(dto);
-		mview.setViewName("redirect:/board/detail.do?num="+dto.getRef_group());
+		mview.setViewName("redirect:/board/detail.do?num="+dto.getRef_group()+"&condition="+condition+"&keyword="+keyword+"&pageNum="+pageNum);
 		return mview;
 	}
 	

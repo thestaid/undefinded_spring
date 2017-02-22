@@ -16,7 +16,7 @@
 		width:80px;
 	}
 	.boardDetail{
-		margin:200px 20px 100px 20px;
+		margin:200px 20px 100px 50px;
 		width:60%;
 	}	
 	.comment textarea{
@@ -99,6 +99,9 @@
 				<div style="margin-top:50px;">댓글</div>
 				<form action="<c:choose><c:when test="${empty id }">javascript:boardDetailLoginCheck()</c:when>
          		<c:otherwise>private/commentInsert.do</c:otherwise></c:choose>" method="post">
+					<input type="hidden" name="nextNum" value="${dto.nextNum }" />
+					<input type="hidden" name="condition" value="${condition }" />
+					<input type="hidden" name="keyword" value="${keyword}" />
 					<!-- 덧글 작성자 -->
 					<input type="hidden" name="writer" value="${id }"/>
 					<!-- 덧글 그룹 -->
@@ -126,7 +129,11 @@
 								</c:if>						
 						</div>
 						<textarea rows="5" disabled id="originComment${tmp.num }" style="width:100%;">${tmp.content }</textarea><br/>
-						<form  id="detailCommentForm${tmp.num }" action="private/commentInsert.do" method="post">
+						<form  id="detailCommentForm${tmp.num }" action="<c:choose><c:when test="${empty id }">javascript:boardDetailLoginCheck()</c:when>
+         				<c:otherwise>private/commentInsert.do</c:otherwise></c:choose>" method="post">
+							<input type="hidden" name="nextNum" value="${dto.nextNum }" />
+							<input type="hidden" name="condition" value="${condition }" />
+							<input type="hidden" name="keyword" value="${keyword}" />
 							<!-- 덧글 작성자 -->
 							<input type="hidden" name="writer" value="${id }"/>
 							<!-- 덧글 그룹 -->
