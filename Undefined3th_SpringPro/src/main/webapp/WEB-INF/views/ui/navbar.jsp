@@ -6,9 +6,12 @@
 	String id=(String)session.getAttribute("id");
 %>
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 body,
 body * {
   transition: all 300ms ease-out;
+  font-family: 'Jeju Gothic', serif;
 }
 body.light {
   background-color: white;
@@ -53,6 +56,18 @@ h3{
 	margin-bottom:30px;
 	padding-bottom:10px;
 	border-bottom: 2px solid gray; 
+}
+.bt-default {
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+}
+.bt-default:hover,
+.bt-default:focus {
+  border: 1px solid black;
+  outline: none;
+  color: white;
+  background-color: black;
 }	
 </style>
 <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
@@ -66,22 +81,22 @@ h3{
     	<c:if test="${id ne 'admin'}">style="display:none;"</c:if> 
     		id="navbarAdmin" 
     	<c:if test="${param.active eq 'admin' }">class="active"</c:if>>
-    	<a href="${pageContext.request.contextPath }/admin/list.do" style="font-size: 30px;">관리페이지</a>
+    	<a href="${pageContext.request.contextPath }/admin/list.do" style="font-size: 30px;">관리자페이지</a>
     </li>
     <c:choose>
     	<c:when test="${empty id }">
-		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/signin_form.do?uri=${pageContext.request.contextPath }" class=signinfo>로그인</a></li>
-		    <li><a href="${pageContext.request.contextPath }/users/signup_form.do?uri=${pageContext.request.contextPath }" class=signinfo>회원가입</a></li>    	
-    		<li><a href="${pageContext.request.contextPath }/users/pwdSearchForm.do?uri=${pageContext.request.contextPath }" class=signinfo>비밀번호 찾기</a></li>
+		    <li style="margin-top:100px"><a href="${pageContext.request.contextPath }/users/signin_form.do?uri=${pageContext.request.contextPath }" class=signinfo><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp로그인</a></li>
+		    <li><a href="${pageContext.request.contextPath }/users/signup_form.do?uri=${pageContext.request.contextPath }" class=signinfo><i class="fa fa-pencil-square-o" aria-hidden="true"></i >&nbsp회원가입</a></li>    	
+    		<li><a href="${pageContext.request.contextPath }/users/pwdSearchForm.do?uri=${pageContext.request.contextPath }" class=signinfo><i class="fa fa-search" aria-hidden="true"></i>&nbsp비밀번호 찾기</a></li>
     	</c:when>
 		<c:otherwise>
 		    <li style="margin-top:100px">
 		    	<a href="${pageContext.request.contextPath }/users/private/info.do?id=${id}" class=signinfo >
-		    		<strong><span class="glyphicon glyphicon-user"></span> ${id } </strong>
+		    		<strong><i class="fa fa-child" aria-hidden="true"></i>&nbsp${id } </strong>
 		    		<span style="font-size: 20px;">님</span>
 		    	</a>
 		    </li>
-		    <li><a href="${pageContext.request.contextPath }/users/signout.do" class=signinfo>로그아웃</a></li>		
+		    <li><a href="${pageContext.request.contextPath }/users/signout.do" class=signinfo><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp로그아웃</a></li>		
 		</c:otherwise>
     </c:choose>
 </ul>

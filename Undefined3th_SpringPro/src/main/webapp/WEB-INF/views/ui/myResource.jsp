@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/bootstrap-theme.css" />
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/navstyle.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/resources/css/font-awesome-4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery-3.1.1.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/index.js"></script>

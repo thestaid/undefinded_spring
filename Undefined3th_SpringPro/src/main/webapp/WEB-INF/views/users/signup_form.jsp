@@ -53,8 +53,10 @@
 				<input class="form-control" type="text" 
 					id="aw" name="aw"/>
 			</div>
-			<div><button type="submit" class="btn btn-primary btn-block">가입</button></div>
-			<button type="reset" class="btn btn-danger btn-block">취소</button>
+			<div>
+				<button type="submit" class="bt-default btn-lg pull-right" style="margin-left: 10px">가입</button>
+				<button type="reset" class="bt-default btn-lg pull-right">취소</button>
+			</div>
 		</form>		
 	</div>
 </body>

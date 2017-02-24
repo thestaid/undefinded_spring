@@ -9,16 +9,16 @@
 <script src="${pageContext.request.contextPath }/
    SmartEditor/js/HuskyEZCreator.js"></script>
 <style>
-   
+	
    .commentTop{
-      background-color: #28274b; 
+      background-color: #e2583e; 
       color: #fff;
       height: 20px;
    }
    .commentFooter_a{
-      color: #e2583e;
        text-decoration: none;
        font-weight: bold;
+       color:black;
    }
    .signup-form{
       height: 200px;
@@ -28,13 +28,6 @@
    }
    iframe{
       background-color:white;
-   }
-   #visitorInsertBtn, #visitorUpdateBtn{
-      font-size:13px;
-      padding: 3px 7px;
-      width: 50px;
-       margin-top: 0px;
-       color: black;
    }
    #visitorId{
       margin-top:30px;
@@ -80,7 +73,7 @@
                <textarea class="form-control" name="content" id="content" style="width:100%;height:150px;"></textarea>                              
             </div>            
             <div>
-               <button type="submit" class="btn btn-default pull-right" id="visitorInsertBtn"><span class="glyphicon glyphicon-ok" style="color:red;font-size:10px;"></span>확인</button>
+               <button type="submit" class="bt-default btn-sm pull-right">확인</button>
             </div>            
          </form>      
       </div>
@@ -88,8 +81,8 @@
       <form action="visitors.do" method="post" id="keywordForm" class="signupForm">
          <div class="row form-group" style="margin-top:50px;">
             <input type="text" name="keyword" placeholder="아이디" value="${keyword }" class="pull-left" style="width:200px;margin-left:18px;"/>
-            <button type="submit" id="searchBtn" class="btn btn-info pull-left" style="height:26px;padding-top:3px;">
-               <span class="glyphicon glyphicon-search" style="font-size:13px;"></span>
+            <button type="submit" class="bt-default btn-sm" style="padding: 2px 5px 1px 5px; margin-left: 3px;">
+               <strong><span class="glyphicon glyphicon-search" style="font-size:10px;"></span></strong>
             </button>
          </div>
       </form>
@@ -100,13 +93,13 @@
                <span class="pull-left" style="font-size:15px;font-weight:bold;">&nbsp ${tmp.writer }</span>
                <span class="pull-right">${tmp.regdate } &nbsp</span>         
             </div>
-            <div class="commentBody" style="border-top:solid 1px gray;clear:both;margin-bottom:20px;">${tmp.content }</div>
+            <div class="commentBody" style="clear:both;margin-bottom:20px;">${tmp.content }</div>
             <div class="commentFooter">
                
                <%-- 아이디가 admin이거나 글의 주인일 경우 삭제와 수정을 가능하게 하기위한 처리 --%>
                <c:if test="${id eq 'admin' or id eq tmp.writer or 'test' eq tmp.writer}">   <!-- 수정사항 : 임시계정 부여 -->
-                  <a href="javascript:deleteConfirm${tmp.num }()" class="pull-right commentFooter_a" style="margin-left:5px">삭제</a>
-                  <a href="javascript:updateform${tmp.num }()" class="pull-right commentFooter_a">수정</a><br/>               
+                  <a href="javascript:deleteConfirm${tmp.num }()" class="pull-right commentFooter_a" id="visitUpdate${tmp.num }" style="margin-left:5px">삭제</a>
+                  <a href="javascript:updateform${tmp.num }()" class="pull-right commentFooter_a" id="visitDelete${tmp.num }">수정</a><br/>               
                </c:if>
                
                <div id="num${tmp.num }" style="width:100%;display:none;">
@@ -116,9 +109,7 @@
                         <textarea class="form-control" name="content" id="content2${tmp.num }" style="width:99%;height:100px;"></textarea>                              
                      </div>            
                      <div>
-                        <button type="submit" class="btn btn-default pull-right" id="visitorUpdateBtn">
-                           <span class="glyphicon glyphicon-ok" style="color:red;font-size:10px" ></span>수정
-                        </button>
+                        <button type="submit" class="bt-default btn-sm pull-right" style="margin-bottom: 10px">수정</button>
                      </div>
                   </form>         
                </div>
@@ -148,6 +139,19 @@
                   location.href="${pageContext.request.contextPath }/visitor/delete.do?num=${tmp.num }";
                }               
             };
+            //수정 삭제 hover시 애니메이션
+            $("#visitUpdate${tmp.num }").mouseover(function(){
+            	$("#visitUpdate${tmp.num }").css("color", "#e2583e").css("text-decoration", "none");
+            });
+            $("#visitUpdate${tmp.num }").mouseout(function(){
+            	$("#visitUpdate${tmp.num }").css("color", "black").css("text-decoration", "none");
+            });            
+            $("#visitDelete${tmp.num }").mouseover(function(){
+            	$("#visitDelete${tmp.num }").css("color", "#e2583e").css("text-decoration", "none");
+            });
+            $("#visitDelete${tmp.num }").mouseout(function(){
+            	$("#visitDelete${tmp.num }").css("color", "black").css("text-decoration", "none");
+            });                        
          </script>                              
       </c:forEach>   
   <!-- 페이지 디스플레이 출력 -->

@@ -6,6 +6,7 @@
 <head>
 <jsp:include page="../../ui/myResource.jsp"/>
 <style>
+	/*#88b04b*/
 	.division{
 		text-align: center;
 	}
@@ -24,7 +25,7 @@
 	.adminListForm{
 		margin:200px 20px 100px 50px;
 		width:60%;
-	}	
+	}
 </style>
 <meta charset=UTF-8">
 <title>회원 관리 페이지</title>
@@ -39,7 +40,7 @@
 					<tr>
 						<th class="division">회원아이디</th>
 						<th class="division">회원이메일</th>
-						<th class="division">　　　　　</th>
+						<th class="division">회원탈퇴</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -47,7 +48,7 @@
 						<tr>
 							<td class="division">${tmp.id }</td>
 							<td class="division">${tmp.email }</td>
-							<td class="division"><a href="javascript:removeconfirm${tmp.id }()">탈퇴</a></td>
+							<td class="division"><a id="adminDelete${tmp.id}" href="javascript:removeconfirm${tmp.id }()" style="text-decoration: none; color:black;"><i class="fa fa-user-times" aria-hidden="true"></i></a></td>
 						</tr>
 						<script>
 							function removeconfirm${tmp.id}(){
@@ -56,6 +57,12 @@
 				                     location.href="${pageContext.request.contextPath }/users/private/delete.do?id=${tmp.id }";
 				                  } 
 							}
+							$("#adminDelete${tmp.id}").mouseover(function(){
+								$("#adminDelete${tmp.id}").css("color", "red");
+							});
+							$("#adminDelete${tmp.id}").mouseout(function(){
+								$("#adminDelete${tmp.id}").css("color", "black");
+							});							
 						</script>
 					</c:forEach>
 				</tbody>
@@ -112,8 +119,8 @@
 			</select>
 			<input type="text" name="keyword" placeholder="검색어" 
 				value="${keyword }"/>
-			<button type="submit" class="btn btn-info" style="padding:4px;">
-				<span class="glyphicon glyphicon-search" style="font-size:13px;"></span>
+			<button type="submit" class="bt-default btn-sm" style="margin-top:2px; padding: 0px 5px 1px 5px;">
+				<strong><span class="glyphicon glyphicon-search" style="font-size:10px;"></span></strong>
 			</button>
 		</form>					
 		</div>

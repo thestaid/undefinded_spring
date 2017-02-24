@@ -46,11 +46,11 @@
 				</tbody>
 			</table>
 			<%-- 탈퇴시 자바스크립트로 물어보고 삭제시키기 위해  javascript:userConfirm()로 이동 시킨다.--%>
-			<a class="btn btn-danger pull-right" href="javascript:userConfirm()" style="margin-left:5px;">
-				<span class="glyphicon glyphicon-trash" style="white"></span> 회원 탈퇴
+			<a class="bt-default btn-lg pull-right" href="javascript:userConfirm()" style="margin-left:5px; text-decoration: none;">
+				<i class="fa fa-user-times" aria-hidden="true"></i>회원 탈퇴
 			</a>
-			<a class="btn btn-info pull-right" href="updateform.do">
-				<span class="glyphicon glyphicon-scissors" style="white"></span> 회원정보 수정
+			<a class="bt-default btn-lg pull-right" href="updateform.do" style="text-decoration: none;">
+				<i class="fa fa-cog" aria-hidden="true"></i>회원정보 수정
 			</a>	
 		</div>
 	</div>
