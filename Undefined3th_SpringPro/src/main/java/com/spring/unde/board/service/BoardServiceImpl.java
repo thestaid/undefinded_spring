@@ -15,7 +15,7 @@ import com.spring.unde.board.dto.BoardDto;
 public class BoardServiceImpl implements BoardService {
 
 	// 한 페이지에 나타낼 로우의 갯수
-	private static final int PAGE_ROW_COUNT = 5;
+	private static final int PAGE_ROW_COUNT = 10;
 	// 하단 디스플레이 페이지 갯수
 	private static final int PAGE_DISPLAY_COUNT = 5;
 

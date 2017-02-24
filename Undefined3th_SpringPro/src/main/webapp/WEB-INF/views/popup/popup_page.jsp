@@ -9,8 +9,8 @@
 <title>팝-업!</title>
 <style>
 	body{
-		background-color: #1c1c1c;
-		color: #fff;
+		background-color: white;
+		color: black;
 	}
 	
 	.welcometext{
