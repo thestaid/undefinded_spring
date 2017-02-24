@@ -116,7 +116,7 @@ h3 {
                            style="background-color: black; opacity: 0.8;">
                            <div class="modal-header">
                               <a class="close" data-dismiss="modal">&times;</a>
-                              <h4><strong style="color:white;">자세히 보기</strong></h4>
+                              <h4><strong style="color:white;">${tmp.getTitle()}</strong></h4>
                            </div>
                            <div class="modal-body">
                               <div class="row">
