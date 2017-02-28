@@ -47,7 +47,7 @@
                <div class='row'>
                   <div class='col-xs-12'>
                      <img id="contact_one" class='img-center'
-                        src="<%=request.getContextPath()%>/resources/images/2.png"
+                        src="<%=request.getContextPath()%>/resources/images/sh1.JPG"
                         alt=''>
                   </div>
                   <div class='col-xs-12'>
@@ -66,7 +66,7 @@
                <div class='row'>
                   <div class='col-xs-12'>
                      <img id="contact_two" class='img-center'
-                        src="<%=request.getContextPath()%>/resources/images/4.png"
+                        src="<%=request.getContextPath()%>/resources/images/jk1.JPG"
                         alt=''>
                   </div>
                   <div class='col-xs-12'>
@@ -85,7 +85,7 @@
                <div class='row'>
                   <div class='col-xs-12'>
                      <img id="contact_three" class='img-center'
-                        src="<%=request.getContextPath()%>/resources/images/1.png"
+                        src="<%=request.getContextPath()%>/resources/images/jy1.JPG"
                         alt=''>
                   </div>
                   <div class='col-xs-12'>
@@ -120,32 +120,32 @@
    <script>
    $("#contact_one").on("mouseover", function(){
 	   $(this).fadeOut("1", function(){
-		   $(this).attr("src","<%=request.getContextPath()%>/resources/images/0.png").fadeIn(1000);
+		   $(this).attr("src","<%=request.getContextPath()%>/resources/images/sh2.JPG").fadeIn(1000);
 	   });
    })
    $("#contact_one").on("mouseout", function(){
 	   $(this).fadeOut("1", function(){
-      $(this).attr("src","<%=request.getContextPath()%>/resources/images/4.png").fadeIn(1000);
+      $(this).attr("src","<%=request.getContextPath()%>/resources/images/sh1.JPG").fadeIn(1000);
 	   });
    })
    $("#contact_two").on("mouseover", function(){
 	   $(this).fadeOut("1", function(){
-	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/1.png").fadeIn(1000);
+	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/jk2.JPG").fadeIn(1000);
 	   });
    })
    $("#contact_two").on("mouseout", function(){
 	   $(this).fadeOut("1", function(){
-	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/4.png").fadeIn(1000);
+	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/jk1.JPG").fadeIn(1000);
 	   });
    })
    $("#contact_three").on("mouseover", function(){
 	   $(this).fadeOut("1", function(){
-	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/2.png").fadeIn(1000);
+	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/jy2.JPG").fadeIn(1000);
 	   });
    })
    $("#contact_three").on("mouseout", function(){
 	   $(this).fadeOut("1", function(){
-	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/4.png").fadeIn(1000);
+	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/jy1.JPG").fadeIn(1000);
 	   });
    })
    </script>
