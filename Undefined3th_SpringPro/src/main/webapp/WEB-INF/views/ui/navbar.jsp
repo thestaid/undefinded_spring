@@ -30,9 +30,9 @@ body ul.menu li>a{text-decoration:none;color:black; }
 body ul.menu li {
   color: #000;
   list-style-type: none;
-  line-height: 50px;
+  line-height: 40px;
   font-family: 'Raleway', sans-serif;
-  font-size: 50px;
+  font-size: 40px;
   text-transform: lowercase;
   margin-top: 5px;
 }
@@ -40,7 +40,7 @@ body ul.menu a:hover {
   color: white !important;
   cursor: pointer;
 }
-.signinfo{font-size: 30px;}
+.signinfo{font-size: 25px;}
 .mainContent{
 	position:absolute;
 	top:0%;
@@ -73,15 +73,15 @@ h3{
 <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
 <ul class="menu">
     <li><a href="${pageContext.request.contextPath }/home.do">Home</a></li>
-    <li id="nav_board"><a href="${pageContext.request.contextPath }/board/list.do">Board</a></li>
+    <li id="nav_board"><a href="${pageContext.request.contextPath }/board/list.do">Study</a></li>
     <li id="nav_photo"><a href="${pageContext.request.contextPath }/photo/list.do">Photo</a></li>
-    <li id="nav_visitor"><a href="${pageContext.request.contextPath }/visitor/visitors.do">Visitor</a></li>
-    <li id="nav_chat"><a href="${pageContext.request.contextPath }/chat/chats.do">Chat</a></li>
+    <li id="nav_Contact"><a href="${pageContext.request.contextPath }/contact.do">Contact</a></li>
+    <%-- <li id="nav_chat"><a href="${pageContext.request.contextPath }/chat.do">Chat</a></li> --%>
     <li 
     	<c:if test="${id ne 'admin'}">style="display:none;"</c:if> 
     		id="navbarAdmin" 
     	<c:if test="${param.active eq 'admin' }">class="active"</c:if>>
-    	<a href="${pageContext.request.contextPath }/admin/list.do" style="font-size: 30px;">관리자페이지</a>
+    	<a href="${pageContext.request.contextPath }/admin/list.do" style="font-size: 20px;">관리자페이지</a>
     </li>
     <c:choose>
     	<c:when test="${empty id }">

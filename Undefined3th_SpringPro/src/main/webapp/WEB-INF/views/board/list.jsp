@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>게시판</title>
+<title>공부방</title>
 <jsp:include page="../ui/myResource.jsp" />
 <style>
 .division {
@@ -26,9 +26,9 @@
 #boardInsertBtn {
 	margin-top: 0px;
 	float: right;
-	padding: 4px;
+	padding: 6px;
 	font-weight: bold;
-	width: 80px;
+	text-decoration: none;
 }
 .boardListForm {
 	margin:200px 20px 100px 50px;
@@ -42,7 +42,7 @@
 	</jsp:include>
 	<div class="mainContent">
 		<div class="boardListForm">
-			<h3><strong>게시판</strong></h3>
+			<h3><strong>공부방</strong></h3>
 			<table class="table table-hover col-xs-8">
 				<thead>
 					<tr>
@@ -70,8 +70,7 @@
 			<%-- 로그인 여부에 따라 글쓰기의 처리가 다름 --%>
 			<a
 				href="private/insertform.do"
-				id="boardInsertBtn" class="btn btn-success"> <span
-				class="glyphicon glyphicon-pencil" style="color: white;"></span> 글쓰기
+				id="boardInsertBtn" class="bt-default btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i>글쓰기
 			</a>
 			<%--  페이지 처리--%>
 			<div style="text-align: center; clear: both;">
@@ -126,8 +125,8 @@
 						<c:if test="${condition eq 'writer' }">selected</c:if>>작성자</option>
 				</select> <input type="text" name="keyword" placeholder="검색어"
 					value="${keyword }" />
-				<button type="submit" class="btn btn-info" style="padding: 4px;">
-					<span class="glyphicon glyphicon-search" style="font-size: 13px;"></span>
+				<button type="submit" class="bt-default btn-sm" style="padding: 5px 5px 1px 5px; margin-left: 3px;">
+					<strong>&nbsp<span class="glyphicon glyphicon-search" style="font-size:10px;"></span>&nbsp</strong>
 				</button>
 			</form>			
 		</div>

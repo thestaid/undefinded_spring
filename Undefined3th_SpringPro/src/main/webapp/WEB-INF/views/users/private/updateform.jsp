@@ -37,12 +37,10 @@
 				<label class="control-label" for="email">이메일</label>
 				<input type="text" name="email" id="email" class="form-control" value="${dto.email }"/><br/>
 			</div>
-			<button type="submit" class="bt-default btn-lg pull-right" id="updateBtn" style="width: 100%; margin-left: 10px;">
+			<button type="submit" class="bt-default btn-sm pull-right" id="updateBtn" style="margin-left: 10px;">
 				수정
-			</button><br/>
-			<button type="reset" class="bt-default btn-lg pull-right" style="width: 100%; margin-top: 5px;">
-				취소
-			</button><br/>
+			</button>
+			<button type="reset" class="bt-default btn-sm pull-right">취소</button>
 		</form>		
 	</div>
 	<script>

@@ -37,7 +37,7 @@
 						name="title" id="title" /><br /> <label class="control-label"
 						for="myFile">사진파일</label> <input class="form-control" type="file"
 						name="myFile" id="myFile" /><br />
-					<button class="btn btn-primary pull-right" type="submit"
+					<button class="bt-default btn-sm pull-right" type="submit"
 						id="fileUploadBtn">확인</button>
 				</div>
 			</form>		

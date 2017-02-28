@@ -41,8 +41,8 @@
 				<input class="form-control" type="text" 
 					id="aw" name="aw"/>
 			</div>
-			<div><button type="submit" class="bt-default btn-lg pull-right"  style="margin-left: 10px">확인</button></div>
-			<button type="reset" class="bt-default btn-lg pull-right">취소</button>
+			<div><button type="submit" class="bt-default btn-sm pull-right"  style="margin-left: 10px">확인</button></div>
+			<button type="reset" class="bt-default btn-sm pull-right">취소</button>
 		</form>		
 	</div>
 </body>

@@ -119,8 +119,8 @@
 			</select>
 			<input type="text" name="keyword" placeholder="검색어" 
 				value="${keyword }"/>
-			<button type="submit" class="bt-default btn-sm" style="margin-top:2px; padding: 0px 5px 1px 5px;">
-				<strong><span class="glyphicon glyphicon-search" style="font-size:10px;"></span></strong>
+			<button type="submit" class="bt-default btn-sm" style="margin-top:2px; padding: 5px 5px 1px 5px;">
+				<strong>&nbsp<span class="glyphicon glyphicon-search" style="font-size:10px;"></span>&nbsp</strong>
 			</button>
 		</form>					
 		</div>

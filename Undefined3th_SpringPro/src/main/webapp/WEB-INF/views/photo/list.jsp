@@ -78,7 +78,6 @@ h3 {
                   <th class="division">작성자</th>
                   <th class="division">미리보기</th>
                   <th class="division">다운로드</th>
-                  <th class="division">크기</th>
                   <th class="division">등록일</th>
                   <th class="division">삭제</th>
                </tr>
@@ -97,7 +96,6 @@ h3 {
                      <td class="division"><a
                         href="download.do?num=${tmp.getNum()}"><span
                            class="glyphicon glyphicon-download-alt"></span></a></td>
-                     <td class="division">${tmp.getFileSize()}</td>
                      <td class="division">${tmp.getRegdate()}</td>
                      <td class="division"><c:choose>
                            <c:when test="${id eq 'admin' or id eq tmp.getWriter()}">
@@ -145,8 +143,8 @@ h3 {
                </c:forEach>
             </tbody>
          </table>
-         <a href="private/uploadform.do" class="btn btn-success"
-            style="float: right; padding: 4px; font-weight: bold;"> <span
+         <a href="private/uploadform.do" class="bt-default btn-sm pull-right"
+            style="float: right; padding: 4px; font-weight: bold; text-decoration: none;"> <span
             class="glyphicon glyphicon-open"></span> 업로드
          </a>
          <%--  페이지 처리--%>
@@ -203,8 +201,8 @@ h3 {
                   <c:if test="${condition eq 'writer' }">selected</c:if>>작성자</option>
             </select> <input type="text" name="keyword" placeholder="검색어"
                value="${keyword }" />
-            <button type="submit" class="btn btn-info"
-               style="padding: 4px; color: white;">
+            <button type="submit" class="bt-default btn-sm"
+               style="padding: 5px 5px 1px 5px;">
                <span class="glyphicon glyphicon-search" style="font-size: 13px;"></span>
             </button>
          </form>

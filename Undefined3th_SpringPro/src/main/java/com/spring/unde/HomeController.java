@@ -24,5 +24,9 @@ public class HomeController {
 	public String noPopup(){
 		return "popup/nopopup";
 	}
+	@RequestMapping("contact")
+	public String contact(){
+		return "contact/contact";
+	}
 	
 }

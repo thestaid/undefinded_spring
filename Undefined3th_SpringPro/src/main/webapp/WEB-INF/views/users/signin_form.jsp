@@ -34,8 +34,8 @@
 				<input type="password" class="form-control" name="pwd" id="pwd"/>
 				<p class="help-block">반드시 입력하세요</p>					
 			</div>				
-			<div><button type="submit" style="margin-bottom:10px;" class="bt-default btn-lg center-block btn-block">로그인</button></div>
-			<button type="reset" style="margin-bottom:10px;" class="bt-default btn-lg center-block btn-block">취소</button>
+			<div><button type="submit" style="margin-bottom:10px;" class="bt-default btn-sm center-block btn-block">로그인</button></div>
+			<button type="reset" style="margin-bottom:10px;" class="bt-default btn-sm center-block btn-block">취소</button>
 		</form>		
 	</div>	
 </body>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8"/>
-<title>방명록 페이지</title>
+<title>무엇이든지 물어보세요</title>
 <script src="${pageContext.request.contextPath }/
    SmartEditor/js/HuskyEZCreator.js"></script>
 <style>
@@ -62,7 +62,7 @@
 </jsp:include>
    <div class="mainContent">
       <div class="boardListForm">
-      <h3><strong> 방명록</strong></h3>
+      <h3><strong>무엇이든지 물어보세요</strong></h3>
       <div class="insertform">
          <%-- 아이디 로그인시 default값에서 로그인 아이디로 바뀐다. --%>
          <form action="<c:choose><c:when test="${empty id }">javascript:visitorLoginCheck()</c:when>
@@ -81,8 +81,8 @@
       <form action="visitors.do" method="post" id="keywordForm" class="signupForm">
          <div class="row form-group" style="margin-top:50px;">
             <input type="text" name="keyword" placeholder="아이디" value="${keyword }" class="pull-left" style="width:200px;margin-left:18px;"/>
-            <button type="submit" class="bt-default btn-sm" style="padding: 2px 5px 1px 5px; margin-left: 3px;">
-               <strong><span class="glyphicon glyphicon-search" style="font-size:10px;"></span></strong>
+            <button type="submit" class="bt-default btn-sm" style="padding: 5px 5px 1px 5px; margin-left: 3px;">
+               <strong>&nbsp<span class="glyphicon glyphicon-search" style="font-size:10px;"></span>&nbsp</strong>
             </button>
          </div>
       </form>

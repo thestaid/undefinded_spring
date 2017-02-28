@@ -54,8 +54,8 @@
 					id="aw" name="aw"/>
 			</div>
 			<div>
-				<button type="submit" class="bt-default btn-lg pull-right" style="margin-left: 10px">가입</button>
-				<button type="reset" class="bt-default btn-lg pull-right">취소</button>
+				<button type="submit" class="bt-default btn-sm pull-right" style="margin-left: 10px">가입</button>
+				<button type="reset" class="bt-default btn-sm pull-right">취소</button>
 			</div>
 		</form>		
 	</div>

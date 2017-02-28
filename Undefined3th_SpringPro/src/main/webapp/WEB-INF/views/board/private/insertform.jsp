@@ -22,7 +22,7 @@
 		<div class="boardInsertForm">
 			<form action="insert.do" method="post" class="form-horizontal">
 				<h3><strong>글쓰기</strong></h3>
-				<div class="form-group">
+				<div class="form-group" style="margin: 0px;">
 				<input type="hidden" name="writer" value="${id }" />
 					<label class="control-label" for="writer">작성자</label> <input
 						class="form-control" type="text" value="${id }"
@@ -33,8 +33,8 @@
 						style="width: 60%; height: 412px; display: none"></textarea>
 					<div>
 						<input type="button" onclick="submitContents(this);" value="확인"
-							class="btn btn-primary" style="float: right; margin-left: 5px;" />
-						<a href="../list.do" class="btn btn-info" style="float: right">목록</a>
+							class="bt-default btn-sm pull-right" style="float: right; margin-left: 5px;" />
+						<a href="../list.do" class="bt-default btn-sm pull-right" style="float: right">목록</a>
 					</div>
 				</div>
 			</form>	

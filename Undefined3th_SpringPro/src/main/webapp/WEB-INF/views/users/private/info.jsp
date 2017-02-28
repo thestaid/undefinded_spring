@@ -46,10 +46,10 @@
 				</tbody>
 			</table>
 			<%-- 탈퇴시 자바스크립트로 물어보고 삭제시키기 위해  javascript:userConfirm()로 이동 시킨다.--%>
-			<a class="bt-default btn-lg pull-right" href="javascript:userConfirm()" style="margin-left:5px; text-decoration: none;">
+			<a class="bt-default btn-sm pull-right" href="javascript:userConfirm()" style="margin-left:5px; text-decoration: none;">
 				<i class="fa fa-user-times" aria-hidden="true"></i>회원 탈퇴
 			</a>
-			<a class="bt-default btn-lg pull-right" href="updateform.do" style="text-decoration: none;">
+			<a class="bt-default btn-sm pull-right" href="updateform.do" style="text-decoration: none;">
 				<i class="fa fa-cog" aria-hidden="true"></i>회원정보 수정
 			</a>	
 		</div>

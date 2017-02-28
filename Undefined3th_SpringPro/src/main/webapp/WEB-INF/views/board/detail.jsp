@@ -44,10 +44,6 @@
 	li a.muted{
 		color : #cecece;
 	}
-	.move-btn{
-		width: 65px;
-		margin: 0px;	
-	}
 </style>
 </head>
 <body>
@@ -57,17 +53,19 @@
 <!-- 로그인 한 회원이 작성한 글이라면 수정 링크를 제공해준다. -->
 	<div class="mainContent">
 		<div class="boardDetail">
-			<c:if test="${dto.prevNum ne 0 }">
-			<a href="detail.do?num=${dto.prevNum }&condition=${condition}&keyword=${keyword}" class="btn btn-default pull-left move-btn" style="margin-right:10px; font-size:12px; padding:5px;">
-				<span class="glyphicon glyphicon-chevron-up" style="color:red;"></span>이전글
-			</a>
-			</c:if>
-			<c:if test="${dto.nextNum ne 0}">
-			<a href="detail.do?num=${dto.nextNum }&condition=${condition}&keyword=${keyword}" class="btn btn-default pull-left move-btn" style="font-size:12px; padding:5px;">
-				다음글<span class="glyphicon glyphicon-chevron-down" style="color:red;"></span>
-			 </a>
-			</c:if>
-			<a href="list.do?condition=${condition}&keyword=${keyword}" class="pull-right btn btn-default move-btn" style="font-size:12px; padding:5px;">목록</a>
+			<div>
+				<c:if test="${dto.prevNum ne 0 }">
+				<a href="detail.do?num=${dto.prevNum }&condition=${condition}&keyword=${keyword}" class="bt-default btn-sm pull-left" style="margin-right:10px; margin-bottom:10px; font-size:12px; padding:5px; text-decoration: none;">
+					<span class="glyphicon glyphicon-chevron-up"></span>이전글
+				</a>
+				</c:if>
+				<c:if test="${dto.nextNum ne 0}">
+				<a href="detail.do?num=${dto.nextNum }&condition=${condition}&keyword=${keyword}" class="bt-default btn-sm pull-left" style="font-size:12px; padding:5px; text-decoration: none;">
+					다음글<span class="glyphicon glyphicon-chevron-down"></span>
+				 </a>
+				</c:if>
+				<a href="list.do?condition=${condition}&keyword=${keyword}" class="bt-default btn-sm pull-right" style="font-size:12px; padding:5px; text-decoration: none;"><i class="fa fa-bars" aria-hidden="true"></i>목록</a>			
+			</div>
 			<table class="table table-bordered" style="margin-top:40px;">
 				<tr>
 					<td>
@@ -92,8 +90,8 @@
 				</tr>
 			</table>
 			<c:if test="${id eq dto.writer }">
-				<a href="javascript:deleteCheck()" class="btn btn-danger pull-right" style="margin-left:10px">삭제</a>
-				<a href="private/updateform.do?num=${dto.num }" class="btn btn-warning pull-right">수정</a>
+				<a href="javascript:deleteCheck()" class="bt-default btn-sm pull-right" style="margin-left:10px">삭제</a>
+				<a href="private/updateform.do?num=${dto.num }" class="bt-default btn-sm pull-right">수정</a>
 			</c:if>
 			<div class="comment_form" style="clear:both;">
 				<div style="margin-top:50px;">댓글</div>
@@ -109,7 +107,7 @@
 					<!-- 덧글 대상 -->
 					<input type="hidden" name="target_id" value="${dto.writer }" />
 					<textarea name="content" style="width: 100%;"></textarea></br>
-					<button class="btn btn-default pull-right move-btn" type="submit">등록</button>
+					<button class="bt-default btn-sm pull-right" type="submit">등록</button>
 				</form>
 			</div>
 			<div class="comments" style="clear:both;">
@@ -120,12 +118,12 @@
 						</c:if>
 						<div id="commentDeleteCheck${tmp.num }">		
 							<strong>from ${tmp.writer }</strong>
-							${tmp.regdate }<br/>
+							<span style="font-size: 10px; color: gray;">${tmp.regdate }</span><br/>
 							<strong>to ${tmp.target_id }</strong>
-								<a id="detailComment${tmp.num }" href="javascript:">답글</a>
+								<a id="detailComment${tmp.num }" href="javascript:" style="text-decoration: none; color: #e2583e">답글</a>
 								<c:if test="${id eq tmp.writer}">
-									<a id="detailUpdate${tmp.num }" href="javascript:">수정</a>
-									<a id="detailDelete${tmp.num }" href="javascript:">삭제</a>						
+									<a id="detailUpdate${tmp.num }" href="javascript:" style="text-decoration: none; color: #e2583e">수정</a>
+									<a id="detailDelete${tmp.num }" href="javascript:" style="text-decoration: none; color: #e2583e">삭제</a>						
 								</c:if>						
 						</div>
 						<textarea rows="5" disabled id="originComment${tmp.num }" style="width:100%;">${tmp.content }</textarea><br/>
@@ -142,9 +140,9 @@
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
 							<textarea name="content"></textarea>
-							<button type="submit">등록</button>
+							<button class="bt-default btn-sm pull-right" type="submit">등록</button>
 						</form>
-						<form  id="detailUpdateForm${tmp.num }" action="private/commentUpdate.do?textnum=${dto.num }&condition=${condition}&keyword=${keyword}" method="post">
+						<form id="detailUpdateForm${tmp.num }" action="private/commentUpdate.do?textnum=${dto.num }&condition=${condition}&keyword=${keyword}" method="post">
 							<input type="hidden" name="num" id="updateNum${tmp.num }" value="${tmp.num }"/>
 							<!-- 덧글 작성자 -->
 							<input type="hidden" name="writer" value="${id }"/>
@@ -156,7 +154,7 @@
 							<textarea name="content" id="boardCommentContent${tmp.num }"></textarea>
 							<button type="submit">수정</button>
 						</form>					
-					</div>
+					</div>					
 					<script>
 						//덧글 달기 혹은 취소 버튼을 눌렀을때 실행할 함수 등록 
 						$("#detailComment${tmp.num }").click(function(){

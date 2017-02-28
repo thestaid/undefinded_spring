@@ -34,7 +34,7 @@
 				<input class="form-control" type="password" 
 					id="pwd" name="pwd"/>
 			</div>
-			<div><button type="submit" class="bt-default btn-lg pull-right">변경</button></div>
+			<div><button type="submit" class="bt-default btn-sm pull-right">변경</button></div>
 		</form>		
 	</div>
 </body>

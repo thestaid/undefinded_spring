@@ -26,7 +26,7 @@
 <div class="mainContent">
 	<div class="updateForm">
 		<form action="update.do" method="post">
-		<h3><strong>게시글 수정</strong></h3>
+		<h3><strong>글 수정</strong></h3>
 			<input type="hidden" name="num" value="${dto.num }"/>
 			<table class="table" style="margin:0px;">
 				<tr>
@@ -48,8 +48,8 @@
 			</table>
 			<textarea name="content" id="ir1" style="width:99%;height:412px;display:none">${dto.content }</textarea>
 			<div>
-		      <input type="button" onclick="submitContents(this);" value="수정" class="btn btn-warning pull-right"/>
-		      <a href="${pageContext.request.contextPath }/board/list.do" class="btn btn-info pull-right" style="margin-right:5px;">목록</a>
+		      <input type="button" onclick="submitContents(this);" value="수정" class="bt-default btn-sm pull-right"/>
+		      <a href="${pageContext.request.contextPath }/board/list.do" class="bt-default btn-sm pull-right" style="margin-right:5px;">목록</a>
 		   </div>
 		</form>		
 	</div>
