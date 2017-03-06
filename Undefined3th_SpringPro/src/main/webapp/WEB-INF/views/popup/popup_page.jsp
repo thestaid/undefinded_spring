@@ -36,7 +36,7 @@
 <body>
 
 <div class="welcomeblock">
-	<p class="welcometext">Welcome to Undefined</p>
+	<p class="welcometext">Welcome to Undefined Study Room</p>
 </div>
 <%-- 체크시 팝업에 관한 chk 파라메터 전송 --%>
 <form action="nopopup.do" method="post" name="myForm">

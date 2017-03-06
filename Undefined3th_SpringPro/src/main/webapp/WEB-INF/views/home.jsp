@@ -40,7 +40,6 @@
 	})
 	$("#nav_visitor").on("mouseover", function(){
 		$("#bk_img").attr("src","<%=request.getContextPath() %>/resources/images/visitor.jpg");
-	})
 	$("#nav_visitor").on("mouseout", function(){
 		$("#bk_img").attr("src","<%=request.getContextPath() %>/resources/images/home.jpg");
 	})
@@ -52,7 +51,7 @@
 	})	
 	//팝업창을 초기에 띄우기
 	<%if(canPopup){%>
-		window.open("popup/popup_page.do","팝업","width=460,height=260,top=138,left=600");
+		window.open("popup/popup_page.do","팝업","width=720,height=210");
 	<%}%>	
 </script>
 </body>
