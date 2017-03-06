@@ -1,7 +1,7 @@
 
 
 //게시판 SQL문
-CREATE TABLE member_board(
+CREATE TABLE board_cafe(
 num NUMBER PRIMARY KEY,
 writer VARCHAR2(100) NOT NULL,
 title VARCHAR2(100) NOT NULL,
@@ -10,7 +10,7 @@ viewCount NUMBER,
 regdate DATE
 );
 
-CREATE SEQUENCE member_board_seq NOCACHE;
+CREATE SEQUENCE board_cafe_seq NOCACHE;
 
 CREATE TABLE unde_users(
 id VARCHAR2(100) PRIMARY KEY, 
