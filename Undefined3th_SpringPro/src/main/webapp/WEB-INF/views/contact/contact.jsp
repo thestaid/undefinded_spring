@@ -21,6 +21,35 @@
    max-width: 100%;
    height: auto;
 }
+
+/* JY CSS추가 start */
+#contact_one{
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+#contact_two{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover #contact_two {
+  opacity: 1;
+}
+/* JY CSS추가 end */
+	
 .mapDiv{
     width: 100%;
    margin: 0 auto;
@@ -49,6 +78,11 @@
                      <img id="contact_one" class='img-center'
                         src="<%=request.getContextPath()%>/resources/images/sh1.JPG"
                         alt=''>
+		  	<!-- JY test 영역 추가 start -->
+                        <div id="contact_two">
+                          <img src="<%=request.getContextPath()%>/resources/images/sh2.JPG" alt="">
+                        </div>
+                        <!-- JY test 영역 추가 end -->
                   </div>
                   <div class='col-xs-12'>
                      <h4>
