@@ -21,35 +21,21 @@
    max-width: 100%;
    height: auto;
 }
-
-/* JY CSS추가 start */
-#contact_one{
-    opacity: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
-  }
-#contact_two{
-  transition: .5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+#contact_one, #contact_two, #contact_three{
+	position: relative;
 }
-
-.container:hover .image {
-  opacity: 0.3;
+#contact_one_back, #contact_two_back, #contact_three_back{
+	margin : 0 auto;
+	padding-left:15px;
+	padding-right:15px;
+	height: 100%;
+	z-index : 100;
+	opacity: 0;
+	left:0;
+	top:0;
+	position: absolute;
+	background-size: contain;
 }
-
-.container:hover #contact_two {
-  opacity: 1;
-}
-/* JY CSS추가 end */
-	
 .mapDiv{
     width: 100%;
    margin: 0 auto;
@@ -78,18 +64,16 @@
                      <img id="contact_one" class='img-center'
                         src="<%=request.getContextPath()%>/resources/images/sh1.JPG"
                         alt=''>
-		  	<!-- JY test 영역 추가 start -->
-                        <div id="contact_two">
-                          <img src="<%=request.getContextPath()%>/resources/images/sh2.JPG" alt="">
-                        </div>
-                        <!-- JY test 영역 추가 end -->
+                     <img id="contact_one_back" class='img-center'
+                        src="<%=request.getContextPath()%>/resources/images/sh2.JPG"
+                        alt=''>
                   </div>
                   <div class='col-xs-12'>
                      <h4>
                         <strong>윤수현</strong>
                      </h4>
                      <p>
-                        	'울트라캡쑝코드마스터'
+                        	'울트라 캡쑝 코드 마스터'
                      </p>
                   </div>
                </div>
@@ -101,6 +85,9 @@
                   <div class='col-xs-12'>
                      <img id="contact_two" class='img-center'
                         src="<%=request.getContextPath()%>/resources/images/jk1.JPG"
+                        alt=''>
+                     <img id="contact_two_back" class='img-center'
+                        src="<%=request.getContextPath()%>/resources/images/jk2.JPG"
                         alt=''>
                   </div>
                   <div class='col-xs-12'>
@@ -121,13 +108,16 @@
                      <img id="contact_three" class='img-center'
                         src="<%=request.getContextPath()%>/resources/images/jy1.JPG"
                         alt=''>
+                     <img id="contact_three_back" class='img-center'
+                        src="<%=request.getContextPath()%>/resources/images/jy2.JPG"
+                        alt=''>
                   </div>
                   <div class='col-xs-12'>
                      <h4>
                         <strong>임지영</strong>
                      </h4>
                      <p>
-                        	'쟤보단 낫겠지'에서 '쟤'
+                        	'돼지런한 삶을 지향합니다'
                      </p>
                   </div>
                </div>
@@ -152,36 +142,49 @@
 	  </div>
    </div>
    <script>
-   $("#contact_one").on("mouseover", function(){
-	   $(this).fadeOut("1", function(){
-		   $(this).attr("src","<%=request.getContextPath()%>/resources/images/sh2.JPG").fadeIn(1000);
-	   });
+   $("#contact_one_back").on("mouseover", function(){
+	     var opaProfile1 = 0;
+	     var intervalId1 = setInterval(function(){
+	    	 opaProfile1 = opaProfile1+0.5;
+	           $("#contact_one_back").css("opacity", opaProfile1);
+	           if(opaProfile1 > 1){
+	              clearInterval(intervalId1);
+				}
+	           }, 20);
+	   })
+	   $("#contact_one_back").on("mouseout", function(){
+		    $("#contact_one_back").css("opacity", 0);
+	   })
+   $("#contact_two_back").on("mouseover", function(){
+     var opaProfile2 = 0;
+     var intervalId2 = setInterval(function(){
+    	 opaProfile2 = opaProfile2+0.5;
+           $("#contact_two_back").css("opacity", opaProfile2);
+           if(opaProfile2 > 1){
+              clearInterval(intervalId2);
+			}
+           }, 20);
    })
-   $("#contact_one").on("mouseout", function(){
-	   $(this).fadeOut("1", function(){
-      $(this).attr("src","<%=request.getContextPath()%>/resources/images/sh1.JPG").fadeIn(1000);
-	   });
+   $("#contact_two_back").on("mouseout", function(){
+	   $("#contact_two_back").css("opacity", 0);
    })
-   $("#contact_two").on("mouseover", function(){
-	   $(this).fadeOut("1", function(){
-	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/jk2.JPG").fadeIn(1000);
-	   });
+   $("#contact_three_back").on("mouseover", function(){
+     var opaProfile3 = 0;
+     var intervalId3 = setInterval(function(){
+    	 opaProfile3 = opaProfile3+0.5;
+           $("#contact_three_back").css("opacity", opaProfile3);
+           if(opaProfile3 > 1){
+              clearInterval(intervalId3);
+			}
+           }, 20);
    })
-   $("#contact_two").on("mouseout", function(){
-	   $(this).fadeOut("1", function(){
-	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/jk1.JPG").fadeIn(1000);
-	   });
+   $("#contact_three_back").on("mouseout", function(){
+	   $("#contact_three_back").css("opacity", 0);
    })
-   $("#contact_three").on("mouseover", function(){
-	   $(this).fadeOut("1", function(){
-	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/jy2.JPG").fadeIn(1000);
-	   });
-   })
-   $("#contact_three").on("mouseout", function(){
-	   $(this).fadeOut("1", function(){
-	   $(this).attr("src","<%=request.getContextPath()%>/resources/images/jy1.JPG").fadeIn(1000);
-	   });
-   })
+   
+   
+   
+   
    </script>
     <!-- Google API -->
     <script async defer
